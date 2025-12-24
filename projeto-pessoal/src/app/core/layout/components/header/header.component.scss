@@ -1,4 +1,7 @@
+@use '../../../../../styles/_variable.scss' as variables;
+
 .toolbar {
+    height: variables.$header-height;
     border-bottom: 1px solid var(--custom-color-header-border);
 
     .toolbar-content {
