@@ -6,4 +6,7 @@
     --custom-color-sidenav: #364150;
     --custom-color-sidenav-text: #a7bbd2;
     --custom-color-sidenav-active: #36C6D3;
+
+    --custom-color-footer: var(--custom-color-sidenav);
+    --custom-color-footer-text: var(--custom-color-sidenav-text);
 }

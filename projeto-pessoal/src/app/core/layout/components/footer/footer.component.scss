@@ -1,0 +1,13 @@
+@use '../../../../../styles/_variable.scss' as variables;
+
+.content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: variables.$footer-height;
+    width: auto;
+    padding-left: 16px;
+
+    background: var(--custom-color-footer);
+    color: var(--custom-color-footer-text);
+}
