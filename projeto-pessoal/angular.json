@@ -39,7 +39,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "estudo",
       "architect": {
         "build": {
           "builder": "@angular/build:application",
