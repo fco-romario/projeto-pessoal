@@ -7,6 +7,7 @@
 @use '@angular/material' as mat;
 @use 'styles/custom-colors' as theme-color;
 @use 'styles/overrides/toolbar.scss';
+@use 'styles/overrides/sidenav.scss';
 @use 'styles/common/container.scss';
 
 html {
