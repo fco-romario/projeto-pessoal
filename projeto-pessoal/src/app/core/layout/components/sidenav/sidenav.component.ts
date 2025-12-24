@@ -1,5 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { SidenavVisibilityStoreService } from '../stores/sidenav-visibility-store.service';
 
 @Component({
   selector: 'estudo-sidenav',
@@ -9,5 +10,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavComponent {
+  private readonly _sidenavVisibilityStoreService = inject(SidenavVisibilityStoreService);
 
+  isSidenavOpened = computed(() => this._sidenavVisibilityStoreService.isVisible());
 }

@@ -1,3 +1,3 @@
-<button matIconButton >
-    <mat-icon class="menu-icon">menu</mat-icon>
+<button matIconButton (click)="toggleSidenavVisibility()">
+    <mat-icon class="menu-icon" [fontIcon]="isIconOpened()"></mat-icon>
 </button>
