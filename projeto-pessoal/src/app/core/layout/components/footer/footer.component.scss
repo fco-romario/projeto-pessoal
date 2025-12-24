@@ -1,13 +1,23 @@
 @use '../../../../../styles/_variable.scss' as variables;
 
+footer {
+    background: var(--custom-color-footer); // Background no footer para garantir preenchimento total
+}
+
 .content {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     height: variables.$footer-height;
     width: auto;
-    padding-left: 16px;
+    padding: 0 16px;
 
-    background: var(--custom-color-footer);
+    p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    // background: var(--custom-color-footer);
     color: var(--custom-color-footer-text);
 }
