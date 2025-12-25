@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="login-form-container">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="form-field-container">
+            <mat-form-field class="form-field">
+                <mat-label>Insira seu usuário</mat-label>
+                <input matInput formControlName="user" type="text"/>
+
+                <button matIconButton matSuffix (click)="clickEvent($event)">
+                    <mat-icon>account_circle</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field class="form-field">
+                <mat-label>Insiria sua senha</mat-label>
+                <input matInput formControlName="password" [type]="hide() ? 'password' : 'text'" />
+                
+                <button matIconButton matSuffix (click)="clickEvent($event)">
+                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+        
+        <div class="submit-container">
+            <button matButton="elevated" class="primary-btn">Entrar</button>
+            <div class="separator">ou</div>
+            <a matButton="elevated" class="secondary-btn" href="https://www.google.com/" target="_blank">Criar Conta</a>
+        </div>
+    </form>
+</div>
+
+
