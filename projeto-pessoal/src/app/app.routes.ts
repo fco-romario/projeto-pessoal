@@ -12,6 +12,16 @@ export const routes: Routes = [
         ]
     },
     {
+        path: 'auth',
+        loadComponent: () => import('./core/auth/layout/layout.component').then(m => m.LayoutComponent),
+        children: [
+            {
+                path: '',
+                loadChildren: () => import('./core/auth/pages/routes')
+            }
+        ]
+    },
+    {
         path: '**',
         redirectTo: ''
     }
