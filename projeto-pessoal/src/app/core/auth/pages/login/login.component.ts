@@ -5,6 +5,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from "@angular/material/icon";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { AuthFormButtonsComponent } from "../components/auth-form-buttons/auth-form-buttons.component";
+import { AuthService } from '../../services/auth.service';
+import { AuthTokenResponse } from '../../interfaces/auth-token-response';
+import { UserCredentials } from '../../interfaces/user-credentials';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'estudo-login',
@@ -16,6 +20,7 @@ import { AuthFormButtonsComponent } from "../components/auth-form-buttons/auth-f
 export class LoginComponent {
   private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
+  private readonly _authService = inject(AuthService);
 
   hide = signal(true);
 
@@ -30,7 +35,17 @@ export class LoginComponent {
   }
 
   submit() {
-    console.log('form', this.form.value);
+    this._authService.login({...this.form.value} as UserCredentials)
+    .subscribe({
+      next: (token: AuthTokenResponse) => {
+        this._router.navigate(['../home'], { relativeTo: this._activatedRoute });
+      },
+      error: (error: HttpErrorResponse) => {
+        if(error.status === 401) {
+          this.form.setErrors({invalidCredentials: true});
+        }
+      }
+    });
   }
  
   criarConta() {

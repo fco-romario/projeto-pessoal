@@ -27,8 +27,12 @@
                     <mat-error>Campo obrigatório</mat-error>
                 }
             </mat-form-field>
+            
         </div>
-    
+
+        @if (form.hasError('invalidCredentials')) {
+            <mat-error>Usuário ou senha inválidos</mat-error>
+        }
         <estudo-auth-form-buttons  [submitLabel]="'Entrar'" (submitBtn)="submit()"  [redirectLabel]="'Criar conta'" (redirectBtn)="criarConta()"></estudo-auth-form-buttons>
     </form>
 </div>
