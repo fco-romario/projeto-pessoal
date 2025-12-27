@@ -3,6 +3,7 @@ import { UserCredentials } from '../interfaces/user-credentials';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthTokenResponse } from '../interfaces/auth-token-response';
+import { User } from '../interfaces/user';
 
 function generateToken(): string {
   let token = '';
@@ -17,7 +18,7 @@ function generateToken(): string {
   providedIn: 'root',
 })
 export class AuthService {
-  
+
   login(payload: UserCredentials): Observable<AuthTokenResponse> {
     if(payload.user === 'romario@gmail.com' && payload.password === '123456') {
       return of({token: generateToken()});
@@ -29,5 +30,9 @@ export class AuthService {
         statusText: 'Unauthorized'  
       })
     );
+  }
+
+  getCurrentUser(token: string): Observable<User> {
+    return of({ username: 'Romário'});
   }
 }

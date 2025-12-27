@@ -9,6 +9,10 @@ import { AuthService } from '../../services/auth.service';
 import { AuthTokenResponse } from '../../interfaces/auth-token-response';
 import { UserCredentials } from '../../interfaces/user-credentials';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TokenLocalStorageStore } from '../../stores/token-local-storage-store.service';
+import { filter, switchMap, tap } from 'rxjs';
+import { User } from '../../interfaces/user';
+import { LoggedInUserStoreService } from '../../stores/logged-in-user-store.service';
 
 @Component({
   selector: 'estudo-login',
@@ -21,6 +25,8 @@ export class LoginComponent {
   private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
   private readonly _authService = inject(AuthService);
+  private readonly _tokenLocalStorageStore = inject(TokenLocalStorageStore);
+  private readonly _loggedInUserStoreService = inject(LoggedInUserStoreService);
 
   hide = signal(true);
 
@@ -36,10 +42,13 @@ export class LoginComponent {
 
   submit() {
     this._authService.login({...this.form.value} as UserCredentials)
+    .pipe(
+      tap((response: AuthTokenResponse) => this._tokenLocalStorageStore.set(response.token)),
+      switchMap((response: AuthTokenResponse) => this._authService.getCurrentUser(response.token)),
+      tap((user: User) => this._loggedInUserStoreService.setUser(user)),
+    )
     .subscribe({
-      next: (token: AuthTokenResponse) => {
-        this._router.navigate(['../home'], { relativeTo: this._activatedRoute });
-      },
+      next: () => this._router.navigate(['/']),
       error: (error: HttpErrorResponse) => {
         if(error.status === 401) {
           this.form.setErrors({invalidCredentials: true});
