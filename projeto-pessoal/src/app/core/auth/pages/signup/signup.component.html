@@ -10,6 +10,14 @@
                 @if (form.controls.name.hasError('required')) {
                     <mat-error>Campo obrigatório</mat-error>
                 }
+
+                @if (form.controls.name.hasError('minlength')) {
+                    <mat-error>Mínimo de 3 caracteres</mat-error>
+                }
+
+                @if (form.controls.name.hasError('maxlength')) {
+                    <mat-error>Máximo de 50 caracteres</mat-error>
+                }
             </mat-form-field>
             
             <mat-form-field class="form-field">
@@ -25,6 +33,10 @@
                 @if (form.controls.email.hasError('email') && form.controls.email.touched) {
                     <mat-error>E-mail inválido</mat-error>
                 }
+
+                @if (form.controls.email.hasError('maxlength')) {
+                    <mat-error>Máximo de 50 caracteres</mat-error>
+                }
             </mat-form-field>
             
             <mat-form-field class="form-field">
@@ -38,20 +50,40 @@
                 @if (form.controls.password.hasError('required')) {
                     <mat-error>Campo obrigatório</mat-error>
                 }
+
+                @if (form.controls.password.hasError('minlength')) {
+                    <mat-error>Mínimo de 6 caracteres</mat-error>
+                }
+                
+                @if (form.controls.password.hasError('maxlength')) {
+                    <mat-error>Máximo de 8 caracteres</mat-error>
+                }
             </mat-form-field>
             
             <mat-form-field class="form-field">
                 <mat-label>Digite a senha novamente</mat-label>
-                <input matInput formControlName="passwordConfirm" [type]="hide() ? 'password' : 'text'"/>
+                <input matInput formControlName="confirmPassword" [type]="hide() ? 'password' : 'text'"/>
                 
                 <button matIconButton matSuffix (click)="clickEvent($event)">
                     <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
                 </button>
                 
-                @if (form.controls.passwordConfirm.hasError('required')) {
+                @if (form.controls.confirmPassword.hasError('required')) {
                     <mat-error>Campo obrigatório</mat-error>
                 }
+
+                @if (form.controls.confirmPassword.hasError('minlength')) {
+                    <mat-error>Mínimo de 6 caracteres</mat-error>
+                }
+                
+                @if (form.controls.confirmPassword.hasError('maxlength')) {
+                    <mat-error>Máximo de 8 caracteres</mat-error>
+                }
             </mat-form-field>
+
+            @if (form.hasError('passwordMismatch') && (form.controls.confirmPassword.dirty && form.controls.password.dirty)) {
+                <mat-error>As senhas não coincidem!</mat-error>
+            }
         </div>
     </form>
 </div>
