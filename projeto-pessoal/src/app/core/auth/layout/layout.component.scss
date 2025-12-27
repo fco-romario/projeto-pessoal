@@ -10,12 +10,22 @@ main {
 
 .page-section {
   flex: 1;
+  height: 50%;
+  
+  .img-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25%;
+    margin-bottom: 34px;
 
-  img {
-    height: 10%;
-    width: 40%;
-    margin-bottom: 16px;
+    img {
+      height: 100px;
+      width: auto;
+      margin-bottom: 16px;
+    }
   }
+
 
   .router-container {
     display: flex;

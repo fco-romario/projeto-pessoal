@@ -8,45 +8,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 300px;
+  width: 360px;
 }
 
 .form-field {
   margin-bottom: 4px;
-}
-.submit-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  
-  .primary-btn {
-    color: var(--custom-color-header);
-    background: var(--custom-color-btn-primary);
-  }
-
-  .secondary-btn {
-    color: var(--custom-color-header);
-    background: var(--custom-color-btn-secondary);
-  }
-
-}
-
-
-.separator {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  
-  &::before,
-  &::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: var(--mat-sys-outline-variant);
-  }
-
-  &::before { margin-right: 16px; }
-  &::after { margin-left: 16px; }
 }

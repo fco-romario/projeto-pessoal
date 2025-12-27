@@ -28,12 +28,8 @@
                 }
             </mat-form-field>
         </div>
-        
-        <div class="submit-container">
-            <button matButton="elevated" class="primary-btn">Entrar</button>
-            <div class="separator">ou</div>
-            <a matButton="elevated" class="secondary-btn" (click)="criarConta()">Criar Conta</a>
-        </div>
+    
+        <estudo-auth-form-buttons  [submitLabel]="'Entrar'" (submitBtn)="submit()"  [redirectLabel]="'Criar conta'" (redirectBtn)="criarConta()"></estudo-auth-form-buttons>
     </form>
 </div>
 

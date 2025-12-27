@@ -1,19 +1,23 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormField, MatInputModule, MatLabel } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
 import { passwordMatchValidator } from '../../validators/password-match.validators';
+import { AuthFormButtonsComponent } from '../components/auth-form-buttons/auth-form-buttons.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'estudo-signup',
-  imports: [ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, AuthFormButtonsComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupComponent {
-
+   private readonly _activatedRoute = inject(ActivatedRoute);
+  private readonly _router = inject(Router);
+  
   hide = signal(true);
 
   form = new FormGroup({
@@ -46,6 +50,10 @@ export class SignupComponent {
 
   submit() {
     throw new Error('Method not implemented.');
+  }
+
+  redirectLogin() {
+    this._router.navigate(['../login'], { relativeTo: this._activatedRoute });
   }
 
 }

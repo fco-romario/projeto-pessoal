@@ -85,5 +85,12 @@
                 <mat-error>As senhas não coincidem!</mat-error>
             }
         </div>
+
+         <estudo-auth-form-buttons  
+            [submitLabel]="'Cadastrar'"
+            (submitBtn)="submit()"
+            [redirectLabel]="'Ir para login'"
+            (redirectBtn)="redirectLogin()">
+        </estudo-auth-form-buttons>
     </form>
 </div>

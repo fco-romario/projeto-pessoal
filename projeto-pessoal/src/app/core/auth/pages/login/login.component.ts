@@ -4,10 +4,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from "@angular/material/icon";
 import { ActivatedRoute, Router, RouterLink } from "@angular/router";
+import { AuthFormButtonsComponent } from "../components/auth-form-buttons/auth-form-buttons.component";
 
 @Component({
   selector: 'estudo-login',
-  imports: [ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule],
+  imports: [ReactiveFormsModule, MatInputModule, MatButtonModule, MatIconModule, AuthFormButtonsComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,7 +32,7 @@ export class LoginComponent {
   submit() {
     console.log('form', this.form.value);
   }
-
+ 
   criarConta() {
     this._router.navigate(['../signup'], { relativeTo: this._activatedRoute });
   }
