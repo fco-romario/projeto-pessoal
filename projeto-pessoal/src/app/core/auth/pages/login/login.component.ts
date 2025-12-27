@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from "@angular/material/icon";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 
 @Component({
   selector: 'estudo-login',
@@ -12,6 +13,9 @@ import { MatIconModule } from "@angular/material/icon";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent {
+  private readonly _activatedRoute = inject(ActivatedRoute);
+  private readonly _router = inject(Router);
+
   hide = signal(true);
 
   form = new FormGroup({
@@ -26,5 +30,9 @@ export class LoginComponent {
 
   submit() {
     console.log('form', this.form.value);
+  }
+
+  criarConta() {
+    this._router.navigate(['../signup'], { relativeTo: this._activatedRoute });
   }
 }
