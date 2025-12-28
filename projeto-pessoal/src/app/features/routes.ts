@@ -4,11 +4,13 @@ import { HomeComponent } from "./home/home.component";
 
 export default [
  {
-    path: '',
-    component: HomeComponent,
+   path: '',
+   data: { breadcrumb: 'Dashboard', title: 'Dashboard' },
+   component: HomeComponent,
  },
  {
-    path: 'user',
-    component: UserComponent,
+   path: 'user',
+   data: { breadcrumb: 'user', title: 'Usuário' },
+   component: UserComponent,
  },
 ] as Routes;
