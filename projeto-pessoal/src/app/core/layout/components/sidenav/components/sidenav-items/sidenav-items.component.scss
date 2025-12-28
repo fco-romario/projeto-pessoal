@@ -19,7 +19,28 @@ a {
 }
 
 .active-link {
-//   --mdc-list-item-label-text-color: var(--custom-color-header-text);
+  position: relative; // Necessário para posicionar o triângulo em relação ao item
+  // background-color: var(--custom-color-sidenav-active);
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;          // Cola no canto direito
+    top: 50%;          // Centraliza verticalmente
+    transform: translateY(-50%); // Ajuste fino da centralização
+    
+    // Desenho do Triângulo
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;    // Lado superior invisível
+    border-bottom: 10px solid transparent; // Lado inferior invisível
+    border-right: 10px solid #fffffff2;        // A cor do triângulo (apontando para a esquerda)
+
+    //todo
+    // opacity: 0;
+    // transition: all 0.3s;
+    //Animação: Se quiser que ele apareça suavemente, adicione transition: all 0.3s; no ::after e defina um estado inicial (como opacity: 0) para os itens não ativos.
+  }
   
   .link-text {
     color: var(--custom-color-header-text);
