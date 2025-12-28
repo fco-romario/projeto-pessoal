@@ -1,17 +1,14 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection, provideZonelessChangeDetection } from '@angular/core';
-import { provideRouter, TitleStrategy } from '@angular/router';
+import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { AppTitleStrategyService } from './core/layout/strategies/app-title-strategy.service';
+import { provideCore } from './core/provide-core';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
     provideRouter(routes),
-    {
-      provide: TitleStrategy,
-      useClass: AppTitleStrategyService
-    }
+    provideCore()
   ],
 };
