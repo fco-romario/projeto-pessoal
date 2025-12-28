@@ -14,3 +14,11 @@
   </a>
   }
 </mat-nav-list>
+
+{{isLoggedIn()}}
+
+@if(isLoggedIn()) {
+  <mat-action-list>
+    <button mat-list-item (click)="logout()">Logout</button>
+  </mat-action-list>
+}
