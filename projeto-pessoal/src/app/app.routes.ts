@@ -7,7 +7,7 @@ export const routes: Routes = [
         children: [
             {
                 path: '',
-                loadChildren: () => import('./features/home/routes')
+                loadChildren: () => import('./features/routes')
             }
         ]
     },

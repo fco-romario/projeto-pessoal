@@ -18,8 +18,9 @@ export class SidenavItemsComponent {
       icon: 'home'
     },
     {
-      label: 'outro',
-      url: '/outra'
+      label: 'Usuário',
+      url: '/user',
+      icon: 'person'
     },
   ]);
 
