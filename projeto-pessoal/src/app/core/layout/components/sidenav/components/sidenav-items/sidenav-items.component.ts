@@ -6,6 +6,7 @@ import { LoggedInUserStoreService } from '../../../../../auth/stores/logged-in-u
 import { AuthService } from '../../../../../auth/services/auth.service';
 import { tap } from 'rxjs';
 import { TokenLocalStorageStore } from '../../../../../auth/stores/token-local-storage-store.service';
+import { LogoutFacadeService } from '../../../../../auth/facades/logout-facade.service';
 
 @Component({
   selector: 'estudo-sidenav-items',
@@ -15,8 +16,7 @@ import { TokenLocalStorageStore } from '../../../../../auth/stores/token-local-s
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavItemsComponent {
-  private _authService = inject(AuthService);
-  private _tokenLocalStorageStore = inject(TokenLocalStorageStore);
+  private _logoutFacadeService = inject(LogoutFacadeService);
   private _loggedInUserStoreService = inject(LoggedInUserStoreService);
   private _router = inject(Router);
 
@@ -40,11 +40,7 @@ export class SidenavItemsComponent {
   }
 
   logout() {
-    this._authService.logout()
-      .pipe(
-        tap(() => this._tokenLocalStorageStore.remove()),
-        tap(() => this._loggedInUserStoreService.logout()),
-      )
+    this._logoutFacadeService.logout()
       .subscribe({
         next: () => this._router.navigate(['/auth/login']),
       });     
