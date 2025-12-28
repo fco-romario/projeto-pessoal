@@ -4,6 +4,6 @@
 :root {
   @include mat.sidenav-overrides((
     container-background-color: var(--custom-color-sidenav),
-    container-text-color: var(--custom-color-sidenav-text),
+    container-text-color: var(--custom-color-sidenav-text)
   ));
 }

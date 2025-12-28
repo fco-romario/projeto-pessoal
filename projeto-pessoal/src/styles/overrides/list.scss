@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+    
+  @include mat.list-overrides((
+    active-indicator-color: var(--custom-color-sidenav-active),
+    // list-item-disabled-label-text-color: var(--custom-color-footer-text),
+    list-item-label-text-color: var(--custom-color-sidenav-text),
+    list-item-focus-label-text-color: var(--custom-color-header-text),
+    list-item-hover-label-text-color: var(--custom-color-header-text),
+  ));
+}

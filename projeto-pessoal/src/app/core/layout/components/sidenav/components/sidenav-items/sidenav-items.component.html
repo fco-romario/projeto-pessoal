@@ -1,0 +1,16 @@
+<mat-nav-list>
+  @for (link of links(); track link) {
+  <a
+    mat-list-item
+    [routerLink]="link.url"
+    routerLinkActive="mdc-list-item--activated active-link"
+    [routerLinkActiveOptions]="{ exact: true }"
+    (click)="closeSidenav()"
+    >
+    <div class="list-item">
+      <mat-icon aria-hidden="false" fontIcon="{{link.icon}}"></mat-icon>
+      <p class="link-text">{{ link.label }}</p>
+    </div>
+  </a>
+  }
+</mat-nav-list>
