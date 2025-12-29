@@ -1,11 +1,13 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, RedirectCommand, Router } from '@angular/router';
 import { LoggedInUserStoreService } from '../stores/logged-in-user-store.service';
+import { TokenLocalStorageStore } from '../stores/token-local-storage-store.service';
 
 export const isAuthenticatedGuardGuard: CanActivateFn = (route, state) => {
   const _loggedInUserStoreService = inject(LoggedInUserStoreService);
+  const _tokenLocalStorageStore = inject(TokenLocalStorageStore);
 
-  if(_loggedInUserStoreService.isLoggedIn()) {
+  if(_loggedInUserStoreService.isLoggedIn() && _tokenLocalStorageStore.has()) {
     return true;
   }
 
@@ -16,7 +18,6 @@ export const isAuthenticatedGuardGuard: CanActivateFn = (route, state) => {
       returnUrl: state.url
     }
   });
-  console.log('state.url', state.url);
   
   return new RedirectCommand(urlTree);
 };
