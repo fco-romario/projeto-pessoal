@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -20,6 +20,7 @@ export class LoginComponent {
   private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
   private readonly _loginFacadeService = inject(LoginFacadeService);
+  private route = inject(ActivatedRoute);
  
   hide = signal(true);
 
@@ -36,7 +37,11 @@ export class LoginComponent {
   submit() {
     this._loginFacadeService.login({ ...this.form.value } as UserCredentials)
     .subscribe({
-      next: () => this._router.navigate(['/']),
+      next: () => { 
+        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
+        this._router.navigate([returnUrl]);
+      },
       error: (error: HttpErrorResponse) => {
         if(error.status === 401) {
           this.form.setErrors({invalidCredentials: true});

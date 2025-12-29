@@ -10,7 +10,13 @@ export const isAuthenticatedGuardGuard: CanActivateFn = (route, state) => {
   }
 
   const _router = inject(Router);
-  const urlTree = _router.parseUrl('/auth/login');
-
+  // const urlTree = _router.parseUrl('/auth/login');
+  const urlTree = _router.createUrlTree(['/auth/login'], {
+    queryParams: {
+      returnUrl: state.url
+    }
+  });
+  console.log('state.url', state.url);
+  
   return new RedirectCommand(urlTree);
 };
