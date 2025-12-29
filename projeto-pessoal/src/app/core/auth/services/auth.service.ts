@@ -39,4 +39,8 @@ export class AuthService {
   getCurrentUser(token: string): Observable<User> {
     return of({ username: 'Romário'});
   }
+
+  refreshToken(token: string): Observable<AuthTokenResponse> {
+    return of({token: generateToken()});
+  }
 }
