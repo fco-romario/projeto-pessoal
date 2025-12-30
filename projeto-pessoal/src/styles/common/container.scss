@@ -3,12 +3,9 @@
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    max-height: variables.$content-height;
+    height: variables.$content-height;
 
     .container-content {
-        width: 100%;
-        max-width: variables.$content-width;
         padding-top: 24px;
     }
 }

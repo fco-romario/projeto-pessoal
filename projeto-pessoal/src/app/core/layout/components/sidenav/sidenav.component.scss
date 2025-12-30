@@ -1,13 +1,33 @@
 @use '../../../../../styles/_variable.scss' as variables;
+@use '../../../../../styles/mixins/media-query.scss' as mq;
 
 .sidenav-container {
   height: variables.$content-height;
+  width: variables.$sidenav-content-width;
 }
 
 .mat-drawer {
   border-radius: 0%;
+  width: variables.$sidenav-drawer-content-width-mobile;
+
+    @include mq.media-query('sm') {
+      width: variables.$sidenav-drawer-content-width + 13vw;
+    }
+
+    @include mq.media-query('md') {
+      width: variables.$sidenav-drawer-content-width + 10vw;
+    }
+
+    @include mq.media-query('lg') {
+      width: variables.$sidenav-drawer-content-width + 5vw;
+    }
+
+    @include mq.media-query('xl') {
+      width: variables.$sidenav-drawer-content-width;
+    }
+
 }
 
 .mat-drawer-side {
-    border: none;
+  border: none;
 }
