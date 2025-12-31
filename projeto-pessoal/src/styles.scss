@@ -10,6 +10,7 @@
 @use 'styles/overrides/sidenav.scss';
 @use 'styles/overrides/list.scss';
 @use 'styles/common/container.scss';
+@use 'styles/common/form-grid.scss';
 
 html {
   @include mat.theme((
