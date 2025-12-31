@@ -1,1 +1,90 @@
-<p>user works!</p>
+<form [formGroup]="form">
+    <div class="form-grid">
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input
+            matInput
+            formControlName="name"
+            required
+        />
+        
+        @if (form.controls.name.hasError('required') && form.controls.name.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+        }
+        @if (form.controls.name.hasError('minlength')) {
+            <mat-error>Mínimo de 3 caracteres</mat-error>
+        }
+        @if (form.controls.name.hasError('maxlength')) {
+            <mat-error>Máximo de 150 caracteres</mat-error>
+        }
+        </mat-form-field>
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Nome da Mãe</mat-label>
+            <input
+            matInput
+            formControlName="mathersName"
+            required
+        />
+        
+        @if (form.controls.mathersName.hasError('required') && form.controls.mathersName.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+        }
+        @if (form.controls.mathersName.hasError('minlength')) {
+            <mat-error>Mínimo de 3 caracteres</mat-error>
+        }
+        @if (form.controls.mathersName.hasError('maxlength')) {
+            <mat-error>Máximo de 150 caracteres</mat-error>
+        }
+        </mat-form-field>
+        <mat-form-field class="col-3" appearance="outline">
+            <mat-label>Gênero</mat-label>
+            <input
+            matInput
+            formControlName="gener"
+            required
+        />
+        
+        @if (form.controls.gener.hasError('required') && form.controls.gener.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+        }
+        </mat-form-field>
+        <mat-form-field class="col-3" appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input
+            matInput
+            formControlName="phoneNumber"
+            required
+        />
+        
+        @if (form.controls.phoneNumber.hasError('required') && form.controls.phoneNumber.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+        }
+        </mat-form-field>
+
+        <mat-form-field class="col-3" appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input
+            matInput
+            formControlName="cpf"
+            required
+        />
+        
+        @if (form.controls.cpf.hasError('required') && form.controls.cpf.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+        }
+        </mat-form-field>
+
+        <mat-form-field class="col-3" appearance="outline">
+            <mat-label>RG</mat-label>
+            <input
+            matInput
+            formControlName="rg"
+            required
+        />
+        
+        @if (form.controls.rg.hasError('required') && form.controls.rg.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+        }
+        </mat-form-field>
+    </div>
+</form>
