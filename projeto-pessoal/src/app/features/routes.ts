@@ -13,7 +13,7 @@ export default [
  {
    path: 'user',
   //  canActivate: [isAuthenticatedGuardGuard],
-   data: { breadcrumb: 'user', title: 'Usuário' },
+   data: { breadcrumb: 'Usuário', title: 'Usuário' },
    component: UserComponent,
  },
 ] as Routes;

@@ -19,4 +19,8 @@ export class LayoutComponent {
   public tree = computed(() => {
     return this._breadcrumbStore.breadcrumbs()
   });
+
+  public lastOnetree = computed(() => {
+    return this._breadcrumbStore.breadcrumbs()[this._breadcrumbStore.breadcrumbs().length - 1];
+  });
 }
