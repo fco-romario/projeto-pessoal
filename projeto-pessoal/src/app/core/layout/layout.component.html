@@ -2,11 +2,15 @@
 
 <estudo-sidenav>
     <div class="container">
-        <mat-toolbar class="content-header">
+        <mat-toolbar class="container-header">
             <span>{{ tree() }}</span>
         </mat-toolbar>
 
         <div class="container-content">
+                <mat-toolbar>
+                    <span>My Application</span>
+                </mat-toolbar>
+
             <router-outlet></router-outlet>
         </div>
     </div>

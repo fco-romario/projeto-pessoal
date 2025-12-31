@@ -1,11 +1,18 @@
 @use '../variable' as variables;
 
 .container {
-    display: flex;
+    display: block;
     flex-direction: column;
-    height: variables.$content-height;
+    height: variables.$content-height - 10vh;
 
     .container-content {
-        padding-top: 24px;
+        margin: 16px;
+        height: 100%;
+        border: 1px solid var(--custom-color-content-header);
+
+        mat-toolbar {
+            background: var(--custom-color-content-header);
+            color: var(--custom-color-header-text);
+        }
     }
 }
