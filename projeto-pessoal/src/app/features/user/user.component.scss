@@ -9,3 +9,13 @@
         color: var(--custom-color-default-text-color);
     }
 }
+
+.endereco-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    mat-expansion-panel {
+        border-radius: 0;
+    }
+}
