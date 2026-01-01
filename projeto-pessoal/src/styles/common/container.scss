@@ -7,7 +7,7 @@
 
     .container-content {
         margin: 16px;
-        height: 100%;
+        min-height: 100%;
         border: 1px solid var(--custom-color-content-header);
 
         mat-toolbar {
