@@ -1,0 +1,14 @@
+ <mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+        <mat-expansion-panel-header>
+            <mat-panel-title> Endereco {{formIndex()}} </mat-panel-title>
+
+            <mat-panel-description>
+                <mat-icon>{{panelOpenState() ?  'visibility' : 'visibility_off'}}</mat-icon>
+            </mat-panel-description>
+
+        </mat-expansion-panel-header>
+        
+        <ng-content></ng-content>                
+    </mat-expansion-panel>
+</mat-accordion>
