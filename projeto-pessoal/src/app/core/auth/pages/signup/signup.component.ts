@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { passwordMatchValidator } from '../../validators/password-match.validators';
 import { AuthFormButtonsComponent } from '../components/auth-form-buttons/auth-form-buttons.component';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../../../shared/user/services/user.service';
+import { User } from '../../interfaces/user';
 
 @Component({
   selector: 'estudo-signup',
@@ -17,6 +19,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class SignupComponent {
    private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
+  private readonly _userService = inject(UserService);
   
   hide = signal(true);
 
@@ -25,6 +28,11 @@ export class SignupComponent {
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(50)
+    ]}),
+    usuario: new FormControl('', {validators: [
+      Validators.required,
+      Validators.minLength(3),
+      Validators.maxLength(10)
     ]}),
     email: new FormControl('', {validators: [
       Validators.required,
@@ -49,7 +57,11 @@ export class SignupComponent {
   }
 
   submit() {
-    throw new Error('Method not implemented.');
+    this._userService.createAccount({...this.form.value} as User).subscribe(() => {
+      console.log(this.form.value);
+      alert('submited');
+      
+    })
   }
 
   redirectLogin() {
