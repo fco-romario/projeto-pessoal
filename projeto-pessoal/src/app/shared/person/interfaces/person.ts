@@ -10,6 +10,6 @@ export interface Person {
     adresses: []
 }
 
-export type PersonCreate = Omit<Person, 'id' | 'mathersName' | 'gender' | 'cpf' | 'rg' | 'phoneNumber' | 'adresses'>;
+export type PersonRequest = Omit<Person, 'id' | 'mathersName' | 'gender' | 'cpf' | 'rg' | 'phoneNumber' | 'adresses'>;
 
 

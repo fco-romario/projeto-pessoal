@@ -7,10 +7,11 @@ import { passwordMatchValidator } from '../../validators/password-match.validato
 import { AuthFormButtonsComponent } from '../components/auth-form-buttons/auth-form-buttons.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../../shared/user/services/user.service';
-import { User } from '../../../../shared/user/interfaces/user';
+import { User, userRequest } from '../../../../shared/user/interfaces/user';
 import { switchMap } from 'rxjs';
 import { PersonService } from '../../../../shared/person/services/person.service';
-import { PersonCreate } from '../../../../shared/person/interfaces/person';
+import { PersonRequest } from '../../../../shared/person/interfaces/person';
+import { CreateAccountFacadeService } from '../../facades/create-account-facade.service';
 
 @Component({
   selector: 'estudo-signup',
@@ -22,8 +23,7 @@ import { PersonCreate } from '../../../../shared/person/interfaces/person';
 export class SignupComponent {
    private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
-  private readonly _userService = inject(UserService);
-  private readonly _personService = inject(PersonService);
+  private readonly _createAccountFacade = inject(CreateAccountFacadeService);
   
   hide = signal(true);
 
@@ -61,22 +61,17 @@ export class SignupComponent {
   }
 
   submit() {
-    const person: PersonCreate = {
+    const person: PersonRequest = {
       name: this.form.value.name as string,
       email: this.form.value.email as string,
     };
 
-    this._personService.createPerson(person).pipe(
-      switchMap((createPerson) => {
-        const user: User = {
-          username: this.form.value.usuario as string,
-          password: this.form.value.password as string,
-          personId: createPerson.id
-        };
+    const user: userRequest = {
+      username: this.form.value.usuario as string,
+      password: this.form.value.password as string,
+    };
 
-        return this._userService.createUser(user);
-      })
-    )
+    this._createAccountFacade.createAccount(person, user)
     .subscribe({
       next: (user) => {
         console.log('Craido: ', user);

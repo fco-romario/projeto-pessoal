@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { Person, PersonCreate } from '../interfaces/person';
+import { Person, PersonRequest } from '../interfaces/person';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class PersonService {
 
   private _http = inject(HttpClient);
 
-  createPerson(person: PersonCreate) {
+  createPerson(person: PersonRequest) {
     return this._http.post<Person>(this.url, person);
   }
 }
