@@ -6,6 +6,10 @@
             <mat-icon class="material-icons-outlined">add</mat-icon>
         </button>
     </div>
+    
+     <estudo-separator>
+        <span class="session-title" >Dados Pessoais</span>
+     </estudo-separator>
 
     <div class="form-grid">
         <mat-form-field class="col-6" appearance="outline">
@@ -95,6 +99,10 @@
         }
         </mat-form-field>
     </div>
+
+     <estudo-separator>
+        <span class="session-title">Endereços</span>
+    </estudo-separator>
     
     <div formArrayName="enderecos" class="endereco-content">
         @for (aula of enderecosGet().controls ; track aula; let i = $index) {

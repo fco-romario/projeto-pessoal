@@ -5,10 +5,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { EnderecoExpansionPanelComponent } from "./components/endereco-expansion-panel/endereco-expansion-panel.component";
+import { MatListModule } from "@angular/material/list";
+import { MatDividerModule } from '@angular/material/divider';
+import { SeparatorComponent } from "../../shared/separator/separator.component";
 
 @Component({
   selector: 'estudo-user',
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule, EnderecoExpansionPanelComponent],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule, EnderecoExpansionPanelComponent, MatDividerModule, SeparatorComponent],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

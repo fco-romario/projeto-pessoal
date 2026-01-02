@@ -1,7 +1,6 @@
 .save-btn-content {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
     
     .save-btn {
         border-radius: 2px;
@@ -18,4 +17,11 @@
     mat-expansion-panel {
         border-radius: 0;
     }
+}
+
+.session-title {
+    font-size: large;
+    font-weight: 400;
+    color: var(--custom-color-content-header);
+    margin: 8px 0;
 }

@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { SeparatorComponent } from "../../../../../shared/separator/separator.component";
 
 @Component({
   selector: 'estudo-auth-form-buttons',
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, SeparatorComponent],
   templateUrl: './auth-form-buttons.component.html',
   styleUrl: './auth-form-buttons.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
