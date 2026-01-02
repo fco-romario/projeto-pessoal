@@ -1,17 +1,15 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatFormField, MatInputModule, MatLabel } from "@angular/material/input";
+import { MatInputModule } from "@angular/material/input";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from '@angular/material/button';
 import { passwordMatchValidator } from '../../validators/password-match.validators';
 import { AuthFormButtonsComponent } from '../components/auth-form-buttons/auth-form-buttons.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../../../../shared/user/services/user.service';
-import { User, userRequest } from '../../../../shared/user/interfaces/user';
-import { switchMap } from 'rxjs';
-import { PersonService } from '../../../../shared/person/services/person.service';
+import { userRequest } from '../../../../shared/user/interfaces/user';
 import { PersonRequest } from '../../../../shared/person/interfaces/person';
 import { CreateAccountFacadeService } from '../../facades/create-account-facade.service';
+import { FeedbackService } from '../../../../shared/feedback/services/feedback.service';
 
 @Component({
   selector: 'estudo-signup',
@@ -24,6 +22,7 @@ export class SignupComponent {
    private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
   private readonly _createAccountFacade = inject(CreateAccountFacadeService);
+  private readonly _feedbackService = inject(FeedbackService);
   
   hide = signal(true);
 
@@ -72,15 +71,10 @@ export class SignupComponent {
     };
 
     this._createAccountFacade.createAccount(person, user)
-    .subscribe({
-      next: (user) => {
-        console.log('Craido: ', user);
-        alert('submited');
-      }, error: (error) => {
-        console.error('Error: ', error);
-        alert('Erro ao criar conta');
-      }
-    })
+      .subscribe({
+        next: (user) => this._feedbackService.sucecess('Conta criada com sucesso!'),
+        error: (error) => this._feedbackService.error('Erro ao criar conta!'),
+      })
   }
 
   redirectLogin() {
