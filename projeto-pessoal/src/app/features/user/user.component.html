@@ -49,16 +49,16 @@
         }
         </mat-form-field>
         <mat-form-field class="col-3" appearance="outline">
-            <mat-label>Gênero</mat-label>
-            <input
-            matInput
-            formControlName="gener"
-            required
-        />
-        
-        @if (form.controls.gener.hasError('required') && form.controls.gener.touched) {
-            <mat-error>Campo obrigatório</mat-error>
-        }
+            <mat-label>Escolha um gênero</mat-label>
+            <mat-select formControlName="gender">
+                @for (gender of genderList; track gender) {
+                    <mat-option [value]="gender">{{gender}}</mat-option>
+                }
+            </mat-select>
+            
+            @if (form.controls.gender.hasError('required')) {
+                <mat-error>Campo obrigatório</mat-error>
+            }
         </mat-form-field>
         <mat-form-field class="col-3" appearance="outline">
             <mat-label>Telefone</mat-label>

@@ -8,10 +8,11 @@ import { EnderecoExpansionPanelComponent } from "./components/endereco-expansion
 import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from '@angular/material/divider';
 import { SeparatorComponent } from "../../shared/separator/separator.component";
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'estudo-user',
-  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule, EnderecoExpansionPanelComponent, MatDividerModule, SeparatorComponent],
+  imports: [MatFormFieldModule, MatInputModule, FormsModule, ReactiveFormsModule, MatButtonModule, MatIconModule, EnderecoExpansionPanelComponent, MatDividerModule, SeparatorComponent,MatSelectModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -23,6 +24,8 @@ export class UserComponent {
   enderecosGet= computed(() => {
     return this.form.get('enderecos') as FormArray;
   })
+
+  readonly genderList: string[] = ['Masculino', 'Feminino', 'Outro'];
 
   enderecos = new FormGroup({
     cep: new FormControl('', {validators: [ Validators.required ]}), // adicionar validação de cep
@@ -46,7 +49,7 @@ export class UserComponent {
       Validators.minLength(3),
       Validators.maxLength(150),
      ]}),
-    gener: new FormControl('', {validators: [ Validators.required ]}),
+    gender: new FormControl('', {validators: [ Validators.required ]}),
     phoneNumber: new FormControl('', {validators: [ Validators.required ]}),// adicionar validação de telefone
     cpf: new FormControl('', {validators: [ Validators.required ]}), // adicionar validação de cpf
     rg: new FormControl('', {validators: [ Validators.required ]}), // adicionar validação de rg
