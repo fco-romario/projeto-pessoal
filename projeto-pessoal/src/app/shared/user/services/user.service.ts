@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { User } from '../../../core/auth/interfaces/user';
+import { User } from '../interfaces/user';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +10,7 @@ export class UserService {
 
   private _http = inject(HttpClient);
 
-  createAccount(user: User) {
+  createUser(user: User) { 
     return this._http.post(this.url, user);
   }
 }

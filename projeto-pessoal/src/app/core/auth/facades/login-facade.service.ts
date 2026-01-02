@@ -3,7 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { UserCredentials } from '../interfaces/user-credentials';
 import { tap, switchMap, Observable, pipe } from 'rxjs';
 import { AuthTokenResponse } from '../interfaces/auth-token-response';
-import { User } from '../interfaces/user';
+import { User } from '../../../shared/user/interfaces/user';
 import { LoggedInUserStoreService } from '../stores/logged-in-user-store.service';
 import { TokenLocalStorageStore } from '../stores/token-local-storage-store.service';
 

@@ -3,7 +3,7 @@ import { UserCredentials } from '../interfaces/user-credentials';
 import { Observable, of, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthTokenResponse } from '../interfaces/auth-token-response';
-import { User } from '../interfaces/user';
+import { User } from '../../../shared/user/interfaces/user';
 
 function generateToken(): string {
   let token = '';
@@ -37,7 +37,7 @@ export class AuthService {
   }
   
   getCurrentUser(token: string): Observable<User> {
-    return of({ username: 'Romário'});
+    return of({ username: 'Romário', password: '123456', personId: '1' });
   }
 
   refreshToken(token: string): Observable<AuthTokenResponse> {

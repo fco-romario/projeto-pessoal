@@ -7,7 +7,10 @@ import { passwordMatchValidator } from '../../validators/password-match.validato
 import { AuthFormButtonsComponent } from '../components/auth-form-buttons/auth-form-buttons.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../../shared/user/services/user.service';
-import { User } from '../../interfaces/user';
+import { User } from '../../../../shared/user/interfaces/user';
+import { switchMap } from 'rxjs';
+import { PersonService } from '../../../../shared/person/services/person.service';
+import { PersonCreate } from '../../../../shared/person/interfaces/person';
 
 @Component({
   selector: 'estudo-signup',
@@ -20,6 +23,7 @@ export class SignupComponent {
    private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
   private readonly _userService = inject(UserService);
+  private readonly _personService = inject(PersonService);
   
   hide = signal(true);
 
@@ -57,10 +61,30 @@ export class SignupComponent {
   }
 
   submit() {
-    this._userService.createAccount({...this.form.value} as User).subscribe(() => {
-      console.log(this.form.value);
-      alert('submited');
-      
+    const person: PersonCreate = {
+      name: this.form.value.name as string,
+      email: this.form.value.email as string,
+    };
+
+    this._personService.createPerson(person).pipe(
+      switchMap((createPerson) => {
+        const user: User = {
+          username: this.form.value.usuario as string,
+          password: this.form.value.password as string,
+          personId: createPerson.id
+        };
+
+        return this._userService.createUser(user);
+      })
+    )
+    .subscribe({
+      next: (user) => {
+        console.log('Craido: ', user);
+        alert('submited');
+      }, error: (error) => {
+        console.error('Error: ', error);
+        alert('Erro ao criar conta');
+      }
     })
   }
 

@@ -1,19 +1,8 @@
 {
   "users": [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "email": "gW2mX@example.com",
-      "password": "123456",
-      "pessoa": {
-        "id": 1,
-        "mathersName": "gW2mX@example.com",
-        "gender": "Masculino",
-        "phoneNumber": "123456",
-        "cpf": "60060060000",
-        "rg": "123456789",
-        "enderecos": []
-      }
-    }
+
+  ],
+  "people": [
+ 
   ]
 }
