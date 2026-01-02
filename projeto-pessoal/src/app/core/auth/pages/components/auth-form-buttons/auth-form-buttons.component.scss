@@ -15,21 +15,4 @@
     background: var(--custom-color-btn-secondary);
   }
 
-  .separator {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    
-    &::before,
-    &::after {
-      content: "";
-      flex: 1;
-      height: 1px;
-      background: var(--mat-sys-outline-variant);
-    }
-
-    &::before { margin-right: 16px; }
-    &::after { margin-left: 16px; }
-  }
-
 }
