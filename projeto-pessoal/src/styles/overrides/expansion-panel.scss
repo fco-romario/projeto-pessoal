@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+  .mat-expansion-indicator {
+    path {  
+      fill: var(--custom-color-content-header);
+    }
+  }
+
+  @include mat.expansion-overrides((
+    // actions-divider-color: orange,
+    // container-background-color: red,
+  ));
+}
