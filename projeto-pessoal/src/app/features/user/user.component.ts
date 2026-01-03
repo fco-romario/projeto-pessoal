@@ -1,14 +1,17 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { EnderecoExpansionPanelComponent } from "./components/endereco-expansion-panel/endereco-expansion-panel.component";
-import { MatListModule } from "@angular/material/list";
 import { MatDividerModule } from '@angular/material/divider';
 import { SeparatorComponent } from "../../shared/separator/separator.component";
 import { MatSelectModule } from '@angular/material/select';
+import { Person } from '../../shared/person/interfaces/person';
+import { ActivatedRoute } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { map } from 'rxjs';
 
 @Component({
   selector: 'estudo-user',
@@ -20,12 +23,17 @@ import { MatSelectModule } from '@angular/material/select';
 export class UserComponent {
 
   private fb = inject(FormBuilder);
+  private _activatedRoute = inject(ActivatedRoute);
 
   enderecosGet= computed(() => {
     return this.form.get('enderecos') as FormArray;
   })
 
   readonly genderList: string[] = ['Masculino', 'Feminino', 'Outro'];
+
+  person = toSignal(
+    this._activatedRoute.data.pipe(map(p => p['person'] as Person))
+  );
 
   enderecos = new FormGroup({
     cep: new FormControl('', {validators: [ Validators.required ]}), // adicionar validação de cep
@@ -37,22 +45,22 @@ export class UserComponent {
     complemento: new FormControl(''),
   })
 
-  readonly form = new FormGroup({
-    name: new FormControl('', {validators:
+  form = new FormGroup({
+    name: new FormControl(this.person()?.name || '', {validators:
       [ 
         Validators.required,
         Validators.minLength(3),
         Validators.maxLength(150),
       ]}),
-    mathersName : new FormControl('', {validators: [
+    mathersName : new FormControl(this.person()?.mathersName || '', {validators: [
       Validators.required,
       Validators.minLength(3),
       Validators.maxLength(150),
      ]}),
-    gender: new FormControl('', {validators: [ Validators.required ]}),
-    phoneNumber: new FormControl('', {validators: [ Validators.required ]}),// adicionar validação de telefone
-    cpf: new FormControl('', {validators: [ Validators.required ]}), // adicionar validação de cpf
-    rg: new FormControl('', {validators: [ Validators.required ]}), // adicionar validação de rg
+    gender: new FormControl(this.person()?.gender || '', {validators: [ Validators.required ]}),
+    phoneNumber: new FormControl(this.person()?.phoneNumber || '', {validators: [ Validators.required ]}),// adicionar validação de telefone
+    cpf: new FormControl(this.person()?.cpf || '', {validators: [ Validators.required ]}), // adicionar validação de cpf
+    rg: new FormControl(this.person()?.rg || '', {validators: [ Validators.required ]}), // adicionar validação de rg
     enderecos: this.fb.array([this.enderecos, this.enderecos], Validators.required),
   });
 

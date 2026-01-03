@@ -1,4 +1,4 @@
-import { inject, Injectable } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { UserCredentials } from '../interfaces/user-credentials';
 import { map, Observable, of, switchMap, throwError } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -21,6 +21,8 @@ function generateToken(): string {
 export class AuthService {
   private readonly _userService = inject(UserService);
 
+  userMock = signal<User | null>(null);
+  
   login(payload: UserCredentials): Observable<AuthTokenResponse> {
   return this.getUserByUsername(payload.user).pipe(
     map(user => {
@@ -34,6 +36,7 @@ export class AuthService {
         });
       }
 
+      this.userMock.set(user[0]);
       return { token: generateToken() };
     })
   );
@@ -44,7 +47,8 @@ export class AuthService {
   }
   
   getCurrentUser(token: string): Observable<User> {
-    return of({ username: 'Romário', password: '123456', personId: '1' });
+    //sera usando quando realmente for gerado um token que poser ser deserializado e perga o usuario de fato
+    return of(this.userMock()!);
   }
 
   refreshToken(token: string): Observable<AuthTokenResponse> {

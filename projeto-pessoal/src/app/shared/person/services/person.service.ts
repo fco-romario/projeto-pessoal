@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Person, PersonRequest } from '../interfaces/person';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -12,5 +13,9 @@ export class PersonService {
 
   createPerson(person: PersonRequest) {
     return this._http.post<Person>(this.url, person);
+  }
+
+  getPersonById(id: string): Observable<Person> {
+    return this._http.get<Person>(`${this.url}/${id}`);
   }
 }
