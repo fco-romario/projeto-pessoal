@@ -1,9 +1,9 @@
 <form [formGroup]="form">
 
     <div class="save-btn-content">
-        <button matButton="elevated" class="save-btn">
-            Editar
-            <mat-icon class="material-icons-outlined">add</mat-icon>
+        <button matButton="elevated" class="save-btn" (click)="update()">
+            {{ edit() ? 'Salvar' : 'Editar' }}
+            <mat-icon class="material-icons-outlined">{{ edit() ? 'add' : 'edit' }}</mat-icon>
         </button>
     </div>
     

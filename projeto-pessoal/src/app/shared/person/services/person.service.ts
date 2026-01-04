@@ -15,6 +15,10 @@ export class PersonService {
     return this._http.post<Person>(this.url, person);
   }
 
+  update(person: Person): Observable<Person> {
+    return this._http.put<Person>(`${this.url}/${person.id}`, person)
+  }
+
   getPersonById(id: string): Observable<Person> {
     return this._http.get<Person>(`${this.url}/${id}`);
   }
