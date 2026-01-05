@@ -11,5 +11,5 @@ export const getPersonByIdResolver: ResolveFn<Person> = (route, state) => {
 
   const id = _loggedInUserStore.currentUser()?.personId!;
   
-  return _personService.getPersonById(id);
+  return _personService.getPersonWithAddresses(id);
 };

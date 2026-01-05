@@ -1,8 +1,42 @@
 {
   "users": [
-
+    {
+      "id": "0a0c",
+      "username": "rom",
+      "password": "123456",
+      "personId": "bbb4"
+    }
   ],
   "people": [
- 
+    {
+      "id": "bbb4",
+      "name": "Romário Alves de Lima",
+      "mathersName": "Maria",
+      "gender": "Masculino",
+      "phoneNumber": "8599999999999",
+      "cpf": "1111111111111111",
+      "rg": "222222222222222",
+      "addresses": []
+    }
+  ],
+  "addresses": [
+    {
+      "id": "88b4",
+      "cep": "22222222222222 updated 2",
+      "logradouro": "rua oscar frança",
+      "bairro": "centro",
+      "numero": "12",
+      "complemento": "próximo a padaria",
+      "personId": "bbb4"
+    },
+    {
+      "id": "a7c9",
+      "cep": "3333333333333 updated ",
+      "logradouro": "logradouro 3",
+      "bairro": "bairro trÊs",
+      "numero": "33",
+      "complemento": "complemento",
+      "personId": "bbb4"
+    }
   ]
 }

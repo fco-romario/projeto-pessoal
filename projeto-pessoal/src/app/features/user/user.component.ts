@@ -14,6 +14,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { PersonService } from '../../shared/person/services/person.service';
 import { FeedbackService } from '../../shared/feedback/services/feedback.service';
+import { AddressService } from '../../shared/person/services/address.service';
+import { Address } from '../../shared/person/interfaces/address';
 
 @Component({
   selector: 'estudo-user',
@@ -42,17 +44,7 @@ export class UserComponent implements OnInit {
   edit = signal(false);
 
   editToggle = computed(() => {this.edit()});
-
-  enderecos = new FormGroup({
-    cep: new FormControl('', {validators: [ Validators.required ]}), // adicionar validação de cep
-    logradouro: new FormControl('', {validators: [ Validators.required ]}),
-    bairro: new FormControl('', {validators: [ Validators.required ]}),
-    // cidade: new FormControl('', {validators: [ Validators.required ]}),
-    // estado: new FormControl('', {validators: [ Validators.required ]}),
-    numero: new FormControl('', {validators: [ Validators.required ]}),
-    complemento: new FormControl(''),
-  })
-
+  
   form = new FormGroup({
     id: new FormControl(this.person()?.id || ''),
     name: new FormControl(this.person()?.name || '', {validators:
@@ -70,8 +62,29 @@ export class UserComponent implements OnInit {
     phoneNumber: new FormControl(this.person()?.phoneNumber || '', {validators: [ Validators.required ]}),// adicionar validação de telefone
     cpf: new FormControl(this.person()?.cpf || '', {validators: [ Validators.required ]}), // adicionar validação de cpf
     rg: new FormControl(this.person()?.rg || '', {validators: [ Validators.required ]}), // adicionar validação de rg
-    enderecos: this.fb.array([this.enderecos], Validators.required, ),
+    enderecos: this.fb.array(this.returnAddresses(this.person()!), Validators.maxLength(2)),
   });
+
+  addAddress(addresses?: Address) {
+    return this.fb.group({
+      id: new FormControl(addresses?.id || ''),
+      cep: new FormControl(addresses?.cep || '', {validators: [ Validators.required ]}), // adicionar validação de cep
+      logradouro: new FormControl(addresses?.logradouro || '', {validators: [ Validators.required ]}),
+      bairro: new FormControl(addresses?.bairro || '', {validators: [ Validators.required ]}),
+      // cidade: new FormControl('', {validators: [ Validators.required ]}),
+      // estado: new FormControl('', {validators: [ Validators.required ]}),
+      numero: new FormControl(addresses?.numero || '', {validators: [ Validators.required ]}),
+      complemento: new FormControl(addresses?.complemento || ''),
+    })
+  }
+
+  private returnAddresses(person: Person) {
+    if(!person!.addresses?.length) return [this.addAddress(), this.addAddress()]; 
+
+    const formAddresses = person.addresses!.map(address => this.addAddress(address));
+    formAddresses.length === 1 ? formAddresses.push(this.addAddress()) : formAddresses;
+    return formAddresses;
+  }
 
   ngOnInit(): void {
     this.form.disable();
@@ -92,16 +105,18 @@ export class UserComponent implements OnInit {
       phoneNumber: this.form.controls['phoneNumber'].value,
       cpf: this.form.controls['cpf'].value,
       rg: this.form.controls['rg'].value,
+      addresses: this.form.controls['enderecos'].value as Address[],
     } as Person;
 
-    this._personService.update(person).subscribe({
-      next: (person) => {
+   
+    this._personService.savePerson(person).subscribe({
+      next: (p) => {
         this._feedbackService.sucecess('Pessoa atualizada com sucesso.');
-        this.form.patchValue({...person});
+        this.form.patchValue({...p});
         this.edit.set(false);
         this.form.disable();
       },
-      error: () => this._feedbackService.error('Erro ao atualizar pessoa. Tente novamente mais tarde.'),
+      error: (error) => {this._feedbackService.error('Erro ao atualizar pessoa. Tente novamente mais tarde.'), console.error(error)},
     });
   }
 }

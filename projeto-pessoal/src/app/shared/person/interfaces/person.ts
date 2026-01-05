@@ -1,3 +1,5 @@
+import { Address } from "./address";
+
 export interface Person {
     id: string;
     name: string;
@@ -7,9 +9,9 @@ export interface Person {
     rg: string;
     phoneNumber: string;
     email: string;
-    adresses: []
+    addresses?: Address[]
 }
 
-export type PersonRequest = Omit<Person, 'id' | 'mathersName' | 'gender' | 'cpf' | 'rg' | 'phoneNumber' | 'adresses'>;
+export type PersonRequest = Omit<Person, 'id' | 'mathersName' | 'gender' | 'cpf' | 'rg' | 'phoneNumber' | 'addresses'>;
 
 

@@ -13,7 +13,7 @@ export class CreateAccountFacadeService {
   private readonly _personService = inject(PersonService);
 
   createAccount(person: PersonRequest, userRequest: userRequest): Observable<User> {
-    return this._personService.createPerson(person).pipe(
+    return this._personService.create(person).pipe(
       switchMap((createPerson) => {
         const user = {
           ...userRequest,
