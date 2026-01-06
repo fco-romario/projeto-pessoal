@@ -2,6 +2,7 @@ import { Routes } from "@angular/router";
 import { UserComponent } from "./user/user.component";
 import { HomeComponent } from "./home/home.component";
 import { getPersonByIdResolver } from "./user/resolvers/get-person-by-id-resolver";
+import { CoursesComponent } from "./courses/courses.component";
 
 export default [
  {
@@ -19,4 +20,9 @@ export default [
       person: getPersonByIdResolver,
    }
  },
+ {
+  path: 'courses',
+  data: { breadcrumb: 'Cursos', title: 'Cursos' },
+  component: CoursesComponent
+ }
 ] as Routes;

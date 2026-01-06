@@ -33,6 +33,11 @@ export class SidenavItemsComponent {
       url: '/user',
       icon: 'person'
     },
+    {
+      label: 'Cursos',
+      url: '/courses',
+      icon: 'history_edu_24'
+    },
   ]);
 
   closeSidenav() {
