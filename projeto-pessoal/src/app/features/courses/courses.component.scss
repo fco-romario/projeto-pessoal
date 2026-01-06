@@ -1,0 +1,32 @@
+ng-container {
+    text-align: center;
+}
+
+mat-column-id {
+    width: 5%;
+}
+
+mat-column-name {
+    width: 25%;
+}
+
+mat-column-url {
+    width: 45%;
+}
+
+mat-column-date {
+    width: 15%;
+}
+
+mat-column-actions {
+    width: 10%;
+}
+
+.actions-container {
+    display: flex;
+    gap: 8px;
+}
+
+.mat-mdc-raised-button .mat-icon {
+    margin: 0;
+}

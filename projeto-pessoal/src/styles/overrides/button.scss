@@ -2,6 +2,9 @@
 
 // Customize the entire app. Change :root to your selector if you want to scope the styles.
 :root {
+    .radius-btn-2px {
+        border-radius: 2px;
+    }
     .save-btn-primary {
         @include mat.button-overrides((
             protected-container-color: var(--custom-color-btn-primary),

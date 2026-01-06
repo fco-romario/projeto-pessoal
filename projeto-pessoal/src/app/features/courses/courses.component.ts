@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 
 export interface UserData {
@@ -10,13 +12,13 @@ export interface UserData {
 
 @Component({
   selector: 'estudo-courses',
-  imports: [MatTableModule],
+  imports: [MatTableModule, MatButtonModule, MatIconModule],
   templateUrl: './courses.component.html',
   styleUrl: './courses.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoursesComponent {
-  displayedColumns: string[] = ['id', 'name', 'url', 'date'];
+  displayedColumns: string[] = ['id', 'name', 'url', 'date', 'actions'];
   dataSource: MatTableDataSource<UserData>;
 
   constructor() {
@@ -33,4 +35,14 @@ export class CoursesComponent {
         },
       ]);
    }
+
+  add() {
+    throw new Error('Method not implemented.');
+  }
+  onDelete(_t65: any) {
+    throw new Error('Method not implemented.');
+  }
+  onEdit(_t65: any) {
+    throw new Error('Method not implemented.');
+  }
 }
