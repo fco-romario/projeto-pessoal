@@ -4,10 +4,8 @@
             <mat-form-field class="form-field">
                 <mat-label>Insira seu usuário</mat-label>
                 <input matInput formControlName="user" type="text"/>
-
-                <button matIconButton matSuffix (click)="clickEvent($event)">
-                    <mat-icon>account_circle</mat-icon>
-                </button>
+                
+                <mat-icon matSuffix>account_circle</mat-icon>
 
                 @if (form.controls.user.hasError('required')) {
                     <mat-error>Campo obrigatório</mat-error>
@@ -18,10 +16,8 @@
             <mat-form-field class="form-field">
                 <mat-label>Insiria sua senha</mat-label>
                 <input matInput formControlName="password" [type]="hide() ? 'password' : 'text'" />
-                
-                <button matIconButton matSuffix (click)="clickEvent($event)">
-                    <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
+
+                <mat-icon matSuffix (click)="clickEvent($event)">{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
 
                 @if (form.controls.user.hasError('required')) {
                     <mat-error>Campo obrigatório</mat-error>
