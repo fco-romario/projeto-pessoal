@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
+:root {
+    .save-btn-primary {
+        @include mat.button-overrides((
+            protected-container-color: var(--custom-color-btn-primary),
+            protected-label-text-color: var(--custom-color-default-text-color), // Cor do texto
+        ));
+    }
+    .save-btn-secondary {
+        @include mat.button-overrides((
+            protected-container-color: var(--custom-color-btn-secondary),
+            protected-label-text-color: var(--custom-color-default-text-color), // Cor do texto
+        ));
+    }
+    .save-btn-tertiary {
+        @include mat.button-overrides((
+            protected-container-color: var(--custom-color-btn-tertiary),
+            protected-label-text-color: var(--custom-color-default-text-color), // Cor do texto
+        ));
+    }
+
+}

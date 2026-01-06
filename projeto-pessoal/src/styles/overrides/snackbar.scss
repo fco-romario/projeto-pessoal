@@ -6,7 +6,7 @@
     .snak-bar-success-feedback {
         @include mat.snack-bar-overrides((
             button-color: var(--custom-color-default-text-color),
-            container-color: var(--custom-color-btn-tertiary),
+            container-color: var(--custom-color-btn-primary),
         ));
     }
     .snak-bar-error-feedback {
@@ -18,7 +18,7 @@
     .snak-bar-warning-feedback {
         @include mat.snack-bar-overrides((
         button-color: var(--custom-color-default-text-color),
-        container-color: var( --custom-color-btn-primary),
+        container-color: var(--custom-color-btn-tertiary),
         ));
     }
 

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { SeparatorComponent } from "../../../../../shared/separator/separator.component";
 
@@ -10,8 +10,11 @@ import { SeparatorComponent } from "../../../../../shared/separator/separator.co
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthFormButtonsComponent {
+  form = input.required<boolean>();
   submitLabel = input.required<string>();
   redirectLabel = input.required<string>();
+  
+  formInvalid = computed(() => this.form());
   
   submitBtn = output();
   redirectBtn = output();

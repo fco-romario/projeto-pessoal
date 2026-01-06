@@ -4,15 +4,7 @@
   flex-direction: column;
   gap: 10px;
 
-  
-  .primary-btn {
+  button {
     color: var(--custom-color-header);
-    background: var(--custom-color-btn-primary);
   }
-
-  .secondary-btn {
-    color: var(--custom-color-header);
-    background: var(--custom-color-btn-secondary);
-  }
-
 }

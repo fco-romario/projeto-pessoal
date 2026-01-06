@@ -1,11 +1,9 @@
 .save-btn-content {
     display: flex;
     align-items: center;
-    
-    .save-btn {
+
+    .save-btn-primary {
         border-radius: 2px;
-        background: var(--custom-color-btn-tertiary);
-        color: var(--custom-color-default-text-color);
     }
 }
 
