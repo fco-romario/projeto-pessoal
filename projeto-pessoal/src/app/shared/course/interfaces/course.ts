@@ -4,3 +4,5 @@ export interface Course {
   url: string;
   date: Date;
 }
+
+export type CourseRequest = Omit<Course, 'id'>

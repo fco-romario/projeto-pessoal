@@ -19,18 +19,26 @@ export class CoursesComponent {
 
   constructor() {
     //todo refatorar para uso de HttpResource 
-    this._courseService.getAllCourses().subscribe((courses) =>{
-      this.dataSource.data = courses
-    });
+    this.getAllCourses();
   }
 
   add() {
-    throw new Error('Method not implemented.');
+    this._courseService.savaCourse({name: 'Spring', url: 'www.angular.com', date: new Date()}).subscribe({
+      next: () => {
+        this.getAllCourses();
+      }
+    })
   }
   onDelete(_t65: any) {
     throw new Error('Method not implemented.');
   }
   onEdit(_t65: any) {
     throw new Error('Method not implemented.');
+  }
+
+  getAllCourses() {
+    this._courseService.getAllCourses().subscribe((courses) =>{
+      this.dataSource.data = courses
+    });
   }
 }

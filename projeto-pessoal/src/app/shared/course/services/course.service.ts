@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Course } from '../interfaces/course';
+import { Course, CourseRequest } from '../interfaces/course';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,5 +12,8 @@ export class CourseService {
 
   getAllCourses(): Observable<Course[]> {
     return this._http.get<Course[]>(`${this._baseUrl}`)
+  }
+  savaCourse(course: CourseRequest) {
+    return this._http.post(`${this._baseUrl}`, course)
   }
 }
