@@ -1,14 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-
-export interface UserData {
-  id: string;
-  name: string;
-  url: string;
-  date: Date;
-}
+import { Course } from '../../shared/course/interfaces/course';
+import { CourseService } from '../../shared/course/services/course.service';
 
 @Component({
   selector: 'estudo-courses',
@@ -18,23 +13,16 @@ export interface UserData {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoursesComponent {
+  private readonly _courseService = inject(CourseService);
   displayedColumns: string[] = ['id', 'name', 'url', 'date', 'actions'];
-  dataSource: MatTableDataSource<UserData>;
+  dataSource = new MatTableDataSource<Course>([]);
 
   constructor() {
-    this.dataSource = new MatTableDataSource(
-      [
-        { 
-          id: '1', name: 'Angular + Spring', url: 'https://www.youtube.com/watch?v=tPOMG0D57S0&list=PLGxZ4Rq3BOBoSRcKWEdQACbUCNWLczg2G', date: new Date() 
-        },
-        { 
-          id: '2', name: 'Angular + Spring', url: 'https://www.youtube.com/watch?v=tPOMG0D57S0&list=PLGxZ4Rq3BOBoSRcKWEdQACbUCNWLczg2G', date: new Date() 
-        },
-        { 
-          id: '3', name: 'Angular + Spring', url: 'https://www.youtube.com/watch?v=tPOMG0D57S0&list=PLGxZ4Rq3BOBoSRcKWEdQACbUCNWLczg2G', date: new Date() 
-        },
-      ]);
-   }
+    //todo refatorar para uso de HttpResource 
+    this._courseService.getAllCourses().subscribe((courses) =>{
+      this.dataSource.data = courses
+    });
+  }
 
   add() {
     throw new Error('Method not implemented.');
