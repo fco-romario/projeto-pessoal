@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
@@ -8,8 +8,8 @@ import { CourseService } from '../../shared/course/services/course.service';
 @Component({
   selector: 'estudo-courses',
   imports: [MatTableModule, MatButtonModule, MatIconModule],
-  templateUrl: './courses.component.html',
-  styleUrl: './courses.component.scss',
+  templateUrl: './courses-list.component.html',
+  styleUrl: './courses-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CoursesComponent {

@@ -2,7 +2,7 @@ import { Routes } from "@angular/router";
 import { UserComponent } from "./user/user.component";
 import { HomeComponent } from "./home/home.component";
 import { getPersonByIdResolver } from "./user/resolvers/get-person-by-id-resolver";
-import { CoursesComponent } from "./courses/courses.component";
+import { CoursesComponent } from "./courses/courseslist.component";
 
 export default [
  {
