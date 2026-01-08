@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { Course } from '../../shared/course/interfaces/course';
 import { CourseService } from '../../shared/course/services/course.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'estudo-courses',
@@ -14,6 +15,7 @@ import { CourseService } from '../../shared/course/services/course.service';
 })
 export class CoursesComponent {
   private readonly _courseService = inject(CourseService);
+  private readonly _router = inject(Router);
   displayedColumns: string[] = ['id', 'name', 'url', 'date', 'actions'];
   dataSource = new MatTableDataSource<Course>([]);
 
@@ -23,11 +25,12 @@ export class CoursesComponent {
   }
 
   add() {
-    this._courseService.savaCourse({name: 'Spring', url: 'www.angular.com', date: new Date()}).subscribe({
-      next: () => {
-        this.getAllCourses();
-      }
-    })
+    this._router.navigate(['create-course']);
+    // this._courseService.savaCourse({name: 'Spring', url: 'www.angular.com', date: new Date()}).subscribe({
+    //   next: () => {
+    //     this.getAllCourses();
+    //   }
+    // })
   }
   onDelete(_t65: any) {
     throw new Error('Method not implemented.');

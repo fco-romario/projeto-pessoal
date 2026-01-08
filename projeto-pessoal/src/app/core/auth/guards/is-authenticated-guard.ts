@@ -7,7 +7,7 @@ export const isAuthenticatedGuardGuard: CanActivateFn = (route, state) => {
   const _loggedInUserStoreService = inject(LoggedInUserStoreService);
   const _tokenLocalStorageStore = inject(TokenLocalStorageStore);
 
-  if(_loggedInUserStoreService.isLoggedIn() && _tokenLocalStorageStore.has()) {
+  if(_tokenLocalStorageStore.has()) {
     return true;
   }
 
