@@ -1,1 +1,90 @@
-<p>create-course works!</p>
+<form [formGroup]="form()">
+    <div class="save-btn-content">
+        <button matButton="elevated" class="save-btn-primary radius-btn-2px" (click)="false">
+            <mat-icon class="material-icons-outlined">{{ 'add' }}</mat-icon>
+        </button>
+    </div>
+
+    <estudo-separator>
+        <span class="session-title" >Dados Pessoais</span>
+     </estudo-separator>
+
+     <div class="form-grid">
+        <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input 
+            matInput 
+            formControlName="name"
+            required>
+
+            @if (form().controls.name.hasError('required') && form().controls.name.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+            @if (form().controls.name.hasError('minlength')) {
+                <mat-error>Mínimo de 3 caracteres</mat-error>
+            }
+            @if (form().controls.name.hasError('maxlength')) {
+                <mat-error>Máximo de 150 caracteres</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="col-2" appearance="outline">
+            <mat-label>Categoria</mat-label>
+            <mat-select>
+            @for (category of categories; track category) {
+                <mat-option [value]="category">{{category}}</mat-option>
+            }
+            </mat-select>
+
+            @if (form().controls.name.hasError('required') && form().controls.name.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Url</mat-label>
+            <input 
+            matInput 
+            formControlName="url"
+            required>
+
+            @if (form().controls.url.hasError('required')) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+            @if (form().controls.url.hasError('pattern')) {
+            <mat-error>Formato inválido. Esperado: https://</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Carga Horária</mat-label>
+            <input 
+            matInput 
+            formControlName="creaditHoures"
+            required>
+
+            @if (form().controls.creaditHoures.hasError('required')) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Data de Início</mat-label>
+            <input 
+            matInput 
+            formControlName="startDate"
+            required>
+
+            @if (form().controls.startDate.hasError('required')) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Data de Término</mat-label>
+            <input 
+            matInput 
+            formControlName="endDate"
+            required>
+
+            @if (form().controls.endDate.hasError('required')) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+        </mat-form-field>
+     </div>
+</form>
