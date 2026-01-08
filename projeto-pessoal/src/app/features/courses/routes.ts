@@ -1,6 +1,6 @@
 import { Routes } from "@angular/router";
 import { CreateCourseComponent } from "./components/create-course/create-course.component";
-import { CoursesComponent } from "./courseslist.component";
+import { CoursesComponent } from "./courses-list.component";
 
 export default [
   {
