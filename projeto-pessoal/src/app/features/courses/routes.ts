@@ -5,7 +5,7 @@ import { CoursesComponent } from "./courses-list.component";
 export default [
   {
     path: '',
-    data: { breadcrumb: 'Cursos', title: 'Cursos' },
+    data: { breadcrumb: '', title: '' },
     component: CoursesComponent,
   },
   { 

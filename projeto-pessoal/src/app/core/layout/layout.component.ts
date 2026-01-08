@@ -17,7 +17,7 @@ export class LayoutComponent {
   private readonly _breadcrumbStore = inject(BreadcrumbStore);
 
   public tree = computed(() => {
-    return this._breadcrumbStore.breadcrumbs()
+    return this._breadcrumbStore.breadcrumbs().join(' • ');
   });
 
   public lastOnetree = computed(() => {
