@@ -8,27 +8,17 @@ import { CreateCourseComponent } from "./courses/components/create-course/create
 export default [
  {
    path: '',
-  //  canActivate: [isAuthenticatedGuardGuard],
    data: { breadcrumb: 'Dashboard', title: 'Dashboard' },
-   component: HomeComponent,
+   loadChildren: () => import('./home/routes'),
  },
  {
    path: 'user',
-  //  canActivate: [isAuthenticatedGuardGuard],
    data: { breadcrumb: 'Usuário', title: 'Usuário' },
-   component: UserComponent,
-   resolve: {
-      person: getPersonByIdResolver,
-   }
+   loadChildren: () => import('./user/routes'),
  },
  {
     path: 'courses',
     data: { breadcrumb: 'Cursos', title: 'Cursos' },
-    component: CoursesComponent,
+    loadChildren: () => import('./courses/routes')
  },
-  {
-    path: 'create-course',
-    data: { breadcrumb: 'Criar Cursos', title: 'Cursos' },
-    component: CreateCourseComponent
-  }
 ] as Routes;

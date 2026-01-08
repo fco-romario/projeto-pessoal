@@ -1,0 +1,16 @@
+import { Routes } from "@angular/router";
+import { CreateCourseComponent } from "./components/create-course/create-course.component";
+import { CoursesComponent } from "./courseslist.component";
+
+export default [
+  {
+    path: '',
+    data: { breadcrumb: 'Cursos', title: 'Cursos' },
+    component: CoursesComponent,
+  },
+  { 
+    path: 'create-course',
+    data: { breadcrumb: 'Lista', title: 'Lista' },
+    component: CreateCourseComponent
+  }
+] as Routes;
