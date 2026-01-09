@@ -2,7 +2,8 @@ export interface Course {
   id: string;
   name: string;
   url: string;
-  date: Date;
+  category: string;
+  createdAt: Date;
 }
 
 export type CourseRequest = Omit<Course, 'id'>
