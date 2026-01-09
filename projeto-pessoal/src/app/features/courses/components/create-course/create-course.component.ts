@@ -6,6 +6,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
 import { SeparatorComponent } from '../../../../shared/separator/separator.component';
 import { MatSelectModule } from "@angular/material/select";
+import { CreateCourseListComponent } from './create-course-list/create-course-list.component';
 
 enum Category {
   FRONT_END = 'Front-End',
@@ -15,7 +16,7 @@ enum Category {
 
 @Component({
   selector: 'estudo-create-course',
-  imports: [ReactiveFormsModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, SeparatorComponent, MatSelectModule],
+  imports: [ReactiveFormsModule, MatButtonModule, MatIconModule, MatFormFieldModule, MatInputModule, SeparatorComponent, MatSelectModule, CreateCourseListComponent],
   templateUrl: './create-course.component.html',
   styleUrl: './create-course.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
