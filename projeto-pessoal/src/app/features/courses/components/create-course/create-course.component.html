@@ -10,7 +10,7 @@
      </estudo-separator>
 
      <div class="form-grid">
-        <mat-form-field class="col-4" appearance="outline">
+        <mat-form-field class="col-6" appearance="outline">
             <mat-label>Nome</mat-label>
             <input 
             matInput 
@@ -27,18 +27,6 @@
                 <mat-error>Máximo de 150 caracteres</mat-error>
             }
         </mat-form-field>
-        <mat-form-field class="col-2" appearance="outline">
-            <mat-label>Categoria</mat-label>
-            <mat-select>
-            @for (category of categories; track category) {
-                <mat-option [value]="category">{{category}}</mat-option>
-            }
-            </mat-select>
-
-            @if (form().controls.name.hasError('required') && form().controls.name.touched) {
-            <mat-error>Campo obrigatório</mat-error>
-            }
-        </mat-form-field>
         <mat-form-field class="col-6" appearance="outline">
             <mat-label>Url</mat-label>
             <input 
@@ -53,36 +41,26 @@
             <mat-error>Formato inválido. Esperado: https://</mat-error>
             }
         </mat-form-field>
-        <mat-form-field class="col-4" appearance="outline">
-            <mat-label>Carga Horária</mat-label>
-            <input 
-            matInput 
-            formControlName="creaditHoures"
-            required>
+                <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Categoria</mat-label>
+            <mat-select>
+            @for (category of categories; track category) {
+                <mat-option [value]="category">{{category}}</mat-option>
+            }
+            </mat-select>
 
-            @if (form().controls.creaditHoures.hasError('required')) {
+            @if (form().controls.category.hasError('required') && form().controls.name.touched) {
             <mat-error>Campo obrigatório</mat-error>
             }
         </mat-form-field>
         <mat-form-field class="col-4" appearance="outline">
-            <mat-label>Data de Início</mat-label>
+            <mat-label>Status</mat-label>
             <input 
             matInput 
-            formControlName="startDate"
+            formControlName="status"
             required>
 
-            @if (form().controls.startDate.hasError('required')) {
-            <mat-error>Campo obrigatório</mat-error>
-            }
-        </mat-form-field>
-        <mat-form-field class="col-4" appearance="outline">
-            <mat-label>Data de Término</mat-label>
-            <input 
-            matInput 
-            formControlName="endDate"
-            required>
-
-            @if (form().controls.endDate.hasError('required')) {
+            @if (form().controls.status.hasError('required')) {
             <mat-error>Campo obrigatório</mat-error>
             }
         </mat-form-field>

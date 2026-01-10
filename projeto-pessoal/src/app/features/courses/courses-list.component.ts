@@ -18,7 +18,7 @@ export class CoursesComponent {
   private readonly _courseService = inject(CourseService);
   private readonly _router = inject(Router);
   private readonly _activatedRoute = inject(ActivatedRoute);
-  displayedColumns: string[] = ['id', 'name', 'url', 'category', 'createdAt', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'url', 'category', 'createdAt', 'status','actions'];
   dataSource = new MatTableDataSource<Course>([]);
 
   constructor() {

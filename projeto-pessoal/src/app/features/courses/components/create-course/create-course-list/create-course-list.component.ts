@@ -5,85 +5,20 @@ import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'estudo-create-course-list',
-  imports: [MatTableModule, MatSortModule, DatePipe],
+  imports: [MatTableModule, MatSortModule],
   templateUrl: './create-course-list.component.html',
   styleUrl: './create-course-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateCourseListComponent {
-  displayedColumns: string[] = ['name', 'category', 'url', 'creaditHoures', 'startDate', 'endDate'];
+  displayedColumns: string[] = ['name', 'category', 'url', 'createdAt', 'status'];
   data: any[] = [
     {
-    number: 1,
-    title: 'Angular',
-    category: 'Back-End',
-    url: 'https://angular.io/',
-    creaditHoures: 100,
-    startDate: new Date(),
-    endDate: new Date()
-  },
-    {
-    number: 1,
-    title: 'Angular',
-    category: 'Front-End',
-    url: 'https://angular.io/',
-    creaditHoures: 100,
-    startDate: new Date(),
-    endDate: new Date()
-  },
-    {
-    number: 1,
-    title: 'Angular',
-    category: 'Front-End',
-    url: 'https://angular.io/',
-    creaditHoures: 100,
-    startDate: new Date(),
-    endDate: new Date()
-  },
-    {
-    number: 1,
-    title: 'Angular',
-    category: 'Back-End',
-    url: 'https://angular.io/',
-    creaditHoures: 100,
-    startDate: new Date(),
-    endDate: new Date()
-  },
-    {
-    number: 1,
-    title: 'Angular',
-    category: 'Front-End',
-    url: 'https://angular.io/',
-    creaditHoures: 100,
-    startDate: new Date(),
-    endDate: new Date()
-  },
-    {
-    number: 1,
-    title: 'Angular',
-    category: 'Back-End',
-    url: 'https://angular.io/',
-    creaditHoures: 100,
-    startDate: new Date(),
-    endDate: new Date()
-  },
-    {
-    number: 1,
-    title: 'Angular',
-    category: 'Back-End',
-    url: 'https://angular.io/',
-    creaditHoures: 100,
-    startDate: new Date(),
-    endDate: new Date()
-  },
-    {
-    number: 1,
-    title: 'Angular',
-    category: 'Front-End',
-    url: 'https://angular.io/',
-    creaditHoures: 100,
-    startDate: new Date(),
-    endDate: new Date()
-  },
-];
+      name: 'Angular 14',
+      category: 'Front-end',
+      url: 'https://angular.io/',
+      status: true,
+      createdAt: new Date(),
+    }
+  ];
 }

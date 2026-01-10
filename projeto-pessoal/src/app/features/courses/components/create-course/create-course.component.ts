@@ -28,11 +28,9 @@ export class CreateCourseComponent {
     new FormGroup({
       id: new FormControl(''),
       name: new FormControl('', {validators: [Validators.required, Validators.minLength(3), Validators.maxLength(50)]}),
-      category: new FormControl('', {validators: [Validators.required]}),
       url: new FormControl('', {validators: [Validators.required, Validators.pattern('https://')]}),
-      creaditHoures: new FormControl(''), //TODO ADICIONAR MASK
-      startDate: new FormControl(''),
-      endDate: new FormControl('')
+      category: new FormControl('', {validators: [Validators.required]}),
+      status: new FormControl('')
     })
   );
 
