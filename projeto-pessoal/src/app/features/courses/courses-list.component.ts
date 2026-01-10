@@ -26,7 +26,7 @@ export class CoursesComponent {
     this.getAllCourses();
   }
 
-  add() {
+  onCreate() {
     this._router.navigate(['create-course'], { relativeTo: this._activatedRoute });
     // this._courseService.savaCourse({name: 'Spring', url: 'www.angular.com', date: new Date()}).subscribe({
     //   next: () => {

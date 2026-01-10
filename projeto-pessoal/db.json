@@ -10,7 +10,7 @@
   "people": [
     {
       "id": "bbb4",
-      "name": "Romário Alves de Lima",
+      "name": "Romário Alves de Lima ",
       "mathersName": "Maria",
       "gender": "Masculino",
       "phoneNumber": "8599999999999",
@@ -37,6 +37,25 @@
       "numero": "33",
       "complemento": "complemento",
       "personId": "bbb4"
+    }
+  ],
+  "courses": [
+    {
+      "id": "1",
+      "name": "Angular",
+      "url": "https://angular.io/",
+      "category": "https://angular.io/",
+      "createdAt": "2021-09-01",
+      "status": true
+
+    },
+    {
+      "id": "1",
+      "name": "Angular",
+      "url": "https://angular.io/",
+      "category": "https://angular.io/",
+      "createdAt": "2021-09-01",
+      "status": true
     }
   ]
 }

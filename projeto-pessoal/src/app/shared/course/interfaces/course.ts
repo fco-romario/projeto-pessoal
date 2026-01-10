@@ -3,8 +3,8 @@ export interface Course {
   name: string;
   url: string;
   category: string;
+  status: any;
   createdAt: Date;
-  status: boolean;
 }
 
-export type CourseRequest = Omit<Course, 'id'>
+export type CourseRequest = Omit<Course, 'id' | 'createdAt'>

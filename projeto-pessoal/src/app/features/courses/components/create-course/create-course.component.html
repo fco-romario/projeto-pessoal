@@ -1,6 +1,6 @@
 <form [formGroup]="form()">
     <div class="save-btn-content">
-        <button matButton="elevated" class="save-btn-primary radius-btn-2px" (click)="false">
+        <button matButton="elevated" class="save-btn-primary radius-btn-2px" [disabled]="form().invalid" (click)="add()">
             <mat-icon class="material-icons-outlined">{{ 'add' }}</mat-icon>
         </button>
     </div>
@@ -41,9 +41,9 @@
             <mat-error>Formato inválido. Esperado: https://</mat-error>
             }
         </mat-form-field>
-                <mat-form-field class="col-4" appearance="outline">
+        <mat-form-field class="col-4" appearance="outline">
             <mat-label>Categoria</mat-label>
-            <mat-select>
+            <mat-select formControlName="category">
             @for (category of categories; track category) {
                 <mat-option [value]="category">{{category}}</mat-option>
             }
@@ -67,4 +67,4 @@
      </div>
 </form>
 
-<estudo-create-course-list></estudo-create-course-list>
+<estudo-create-course-list [course]="courseToAdd()"></estudo-create-course-list>
