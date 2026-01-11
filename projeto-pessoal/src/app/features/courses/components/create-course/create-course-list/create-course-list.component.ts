@@ -14,23 +14,12 @@ import { MatButtonModule } from '@angular/material/button';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateCourseListComponent {
+  displayedColumns: string[] = ['name', 'category', 'url', 'status', 'actions'];
+  
   salvar = output<CourseRequest[]>();
 
-  course = input.required<CourseRequest | null>();
+  courses = input.required<CourseRequest[]>();
   edit = output<CourseRequest>();
   delete = output<CourseRequest>();
   
-  displayedColumns: string[] = ['name', 'category', 'url', 'status', 'actions'];
-
-  private data = signal<CourseRequest[]>([]);
-  courses = this.data.asReadonly();
-
-  constructor() {
-    effect(() => {
-      if(!this.course()) return;
-
-      const currentCourse = this.course();
-      this.data.update(list => [...list, currentCourse!]);
-    });
-  }
 }

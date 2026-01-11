@@ -30,9 +30,7 @@ export class CreateCourseComponent {
   private readonly _courseService = inject(CourseService);  
   private readonly _feedbackService = inject(FeedbackService);
 
-  course = signal<CourseRequest | null>(null);
-
-  courseToAdd = computed(() => this.course());
+  courses = signal<CourseRequest[]>([]);
 
   readonly categories = Object.entries(Category).map(([key, value]) => value);
 
@@ -47,8 +45,6 @@ export class CreateCourseComponent {
   );
 
   add() {
-    this.course.set(null);
-
     const curso = {
       name: this.form().get('name')?.value,
       url: this.form().get('url')?.value,
@@ -56,7 +52,7 @@ export class CreateCourseComponent {
       status: this.form().get('status')?.value
     } as CourseRequest;
 
-    this.course.set(curso);
+    this.courses.update((courses) => [...courses, curso]);
     this.form().reset();
   }
 
