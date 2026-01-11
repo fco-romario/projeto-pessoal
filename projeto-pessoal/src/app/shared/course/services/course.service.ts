@@ -26,4 +26,8 @@ export class CourseService {
   savaCourse(course: CourseRequest) {
     return this._http.post(`${this._baseUrl}`, course)
   }
+
+  deleteCourse(courseId: string) {
+    return this._http.delete(`${this._baseUrl}/${courseId}`)
+  }
 }

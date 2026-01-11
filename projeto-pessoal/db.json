@@ -41,36 +41,12 @@
   ],
   "courses": [
     {
-      "id": "03b2",
-      "name": "Primeiro curso",
+      "id": "cde5",
+      "name": "Curso de Angular para iniciantes",
       "url": "http://localhost:4200/courses/create-course",
       "category": "Front-End",
-      "status": "ativo",
-      "createdAt": "2023-06-07T20:55:55.000Z"
-    },
-    {
-      "id": "58db",
-      "name": "Curso dois",
-      "url": "http://localhost:4200/courses/create-course",
-      "category": "Full-Stack",
-      "status": "em andamento",
-      "createdAt": "2026-01-11T01:02:49.695Z"
-    },
-    {
-      "id": "77fb",
-      "name": "Curso três",
-      "url": "http://localhost:4200/courses",
-      "category": "Front-End",
-      "status": "em andamento",
-      "createdAt": "2026-01-11T01:02:49.695Z"
-    },
-    {
-      "id": "d98b",
-      "name": "Teste",
-      "url": "http://localhost:4200/",
-      "category": "Full-Stack",
-      "status": "s",
-      "createdAt": "2026-01-11T02:09:23.446Z"
+      "status": "Concluído",
+      "createdAt": "2026-01-11T19:32:41.542Z"
     }
   ]
 }
