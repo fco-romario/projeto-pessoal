@@ -69,7 +69,8 @@
 
 <estudo-create-course-list 
     [courses]="courses()"
+    [formDirty]="this.form().dirty"
     (salvar)="save($event)"
     (edit)="edit($event)"
-    (delete)="delete($event)">
+    (delete)="remove($event)">
 </estudo-create-course-list>

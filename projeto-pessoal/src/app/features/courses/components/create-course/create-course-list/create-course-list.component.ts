@@ -16,9 +16,10 @@ import { MatButtonModule } from '@angular/material/button';
 export class CreateCourseListComponent {
   displayedColumns: string[] = ['name', 'category', 'url', 'status', 'actions'];
   
-  salvar = output<CourseRequest[]>();
-
   courses = input.required<CourseRequest[]>();
+  formDirty = input.required<boolean>();
+  
+  salvar = output<CourseRequest[]>();
   edit = output<CourseRequest>();
   delete = output<CourseRequest>();
   

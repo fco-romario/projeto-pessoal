@@ -31,7 +31,7 @@ export class CreateCourseComponent {
   private readonly _feedbackService = inject(FeedbackService);
 
   courses = signal<CourseRequest[]>([]);
-
+  
   readonly categories = Object.entries(Category).map(([key, value]) => value);
 
   form = computed(() => 
@@ -68,11 +68,18 @@ export class CreateCourseComponent {
   }
 
   edit(curso: CourseRequest) {
+
     this.form().patchValue({...curso});
+    this.form().markAsDirty();
+    this.remove(curso);
   }
 
-  delete(curso: CourseRequest) {
-    // this.course.set(curso);
-
+  remove(curso: CourseRequest) {
+    this.courses.update(courses => courses.filter(c => {
+      return c.name !== curso.name ||
+      c.url !== curso.url ||
+      c.category !== curso.category ||
+      c.status !== curso.status
+    }));
   }
 }

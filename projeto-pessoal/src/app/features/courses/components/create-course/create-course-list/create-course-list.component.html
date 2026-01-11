@@ -33,7 +33,7 @@
         <th mat-header-cell *matHeaderCellDef>Ações</th>
         <td mat-cell *matCellDef="let row">
           <div class="actions-container">
-            <button matButton="elevated" class="save-btn-tertiary radius-btn-2px" (click)="edit.emit(row)">
+            <button matButton="elevated" class="save-btn-tertiary radius-btn-2px" [disabled]="formDirty()" (click)="edit.emit(row)">
               <mat-icon class="material-icons-outlined">border_color_24</mat-icon>
             </button>
             <button matButton="elevated" class="save-btn-secondary radius-btn-2px" (click)="delete.emit(row)">
