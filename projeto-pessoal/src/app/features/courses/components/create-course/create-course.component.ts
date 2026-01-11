@@ -54,4 +54,8 @@ export class CreateCourseComponent {
     this.form().reset();
   }
 
+  save(courses: CourseRequest[]) {
+    console.log('courses', courses);
+  }
+
 }

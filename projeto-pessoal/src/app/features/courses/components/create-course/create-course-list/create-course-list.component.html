@@ -33,3 +33,9 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   </div>
+
+<div class="save-itens-content">
+    <button matButton="elevated" class="save-btn-primary radius-btn-2px" [disabled]="!courses().length" (click)="salvar.emit(courses())">
+        <mat-icon class="material-icons-outlined">save_24</mat-icon>Salvar Itens
+    </button>
+</div>

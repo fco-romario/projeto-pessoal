@@ -1,6 +1,13 @@
 .example-table-container {
   position: relative;
-  min-height: 200px;
-  max-height: 400px;
+  min-height: 350px;
+  max-height: 350px;
   overflow: auto;
+}
+
+.save-itens-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
 }

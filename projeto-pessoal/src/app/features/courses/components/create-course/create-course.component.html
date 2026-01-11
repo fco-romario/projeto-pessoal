@@ -1,7 +1,7 @@
 <form [formGroup]="form()">
-    <div class="save-btn-content">
+    <div >
         <button matButton="elevated" class="save-btn-primary radius-btn-2px" [disabled]="form().invalid" (click)="add()">
-            <mat-icon class="material-icons-outlined">{{ 'add' }}</mat-icon>
+            <mat-icon class="material-icons-outlined">add</mat-icon>Adicionar
         </button>
     </div>
 
@@ -67,4 +67,7 @@
      </div>
 </form>
 
-<estudo-create-course-list [course]="courseToAdd()"></estudo-create-course-list>
+<estudo-create-course-list 
+    [course]="courseToAdd()"
+    (salvar)="save($event)">
+</estudo-create-course-list>
