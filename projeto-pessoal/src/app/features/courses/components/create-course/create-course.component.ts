@@ -9,6 +9,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { CreateCourseListComponent } from './create-course-list/create-course-list.component';
 import { CourseService } from '../../../../shared/course/services/course.service';
 import { CourseRequest } from '../../../../shared/course/interfaces/course';
+import { Router } from '@angular/router';
+import { FeedbackService } from '../../../../shared/feedback/services/feedback.service';
 
 enum Category {
   FRONT_END = 'Front-End',
@@ -24,6 +26,10 @@ enum Category {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateCourseComponent {
+  private readonly _router = inject(Router);  
+  private readonly _courseService = inject(CourseService);  
+  private readonly _feedbackService = inject(FeedbackService);
+
   course = signal<CourseRequest | null>(null);
 
   courseToAdd = computed(() => this.course());
@@ -35,7 +41,7 @@ export class CreateCourseComponent {
       id: new FormControl(''),
       name: new FormControl('', {validators: [Validators.required, Validators.minLength(3), Validators.maxLength(50)]}),
       url: new FormControl('', {validators: [Validators.required]}),
-      category: new FormControl(''),
+      category: new FormControl('', {validators: [Validators.required]}),
       status: new FormControl('')
     })
   );
@@ -55,7 +61,14 @@ export class CreateCourseComponent {
   }
 
   save(courses: CourseRequest[]) {
-    console.log('courses', courses);
+    this._courseService.savaCourses(courses)
+    .subscribe({
+      next: () => {
+        this._feedbackService.sucecess('Cursos salvos com sucesso!');
+        this._router.navigate(['courses']);
+      },
+      error: (error) => this._feedbackService.error('Erro ao salvar cursos. Tente novamente mais tarde.')
+    });
   }
 
 }

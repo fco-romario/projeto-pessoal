@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Course, CourseRequest } from '../interfaces/course';
-import { Observable } from 'rxjs';
+import { forkJoin, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -12,6 +12,16 @@ export class CourseService {
 
   getAllCourses(): Observable<Course[]> {
     return this._http.get<Course[]>(`${this._baseUrl}`)
+  }
+  savaCourses(courses: CourseRequest[]) {
+    const coursesToSave = courses.map(course => {
+      course.createdAt = new Date();
+      return course;
+    });
+   
+    const request =  coursesToSave.map((course) => this.savaCourse(course));
+    
+    return forkJoin(request);
   }
   savaCourse(course: CourseRequest) {
     return this._http.post(`${this._baseUrl}`, course)

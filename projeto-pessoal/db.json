@@ -41,21 +41,28 @@
   ],
   "courses": [
     {
-      "id": "1",
-      "name": "Angular",
-      "url": "https://angular.io/",
-      "category": "https://angular.io/",
-      "createdAt": "2021-09-01",
-      "status": true
-
+      "id": "03b2",
+      "name": "Primeiro curso",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Front-End",
+      "status": "ativo",
+      "createdAt": "2023-06-07T20:55:55.000Z"
     },
     {
-      "id": "1",
-      "name": "Angular",
-      "url": "https://angular.io/",
-      "category": "https://angular.io/",
-      "createdAt": "2021-09-01",
-      "status": true
+      "id": "58db",
+      "name": "Curso dois",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Full-Stack",
+      "status": "em andamento",
+      "createdAt": "2026-01-11T01:02:49.695Z"
+    },
+    {
+      "id": "77fb",
+      "name": "Curso três",
+      "url": "http://localhost:4200/courses",
+      "category": "Front-End",
+      "status": "em andamento",
+      "createdAt": "2026-01-11T01:02:49.695Z"
     }
   ]
 }

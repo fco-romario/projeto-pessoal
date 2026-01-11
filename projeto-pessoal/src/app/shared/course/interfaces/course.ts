@@ -7,4 +7,4 @@ export interface Course {
   createdAt: Date;
 }
 
-export type CourseRequest = Omit<Course, 'id' | 'createdAt'>
+export type CourseRequest = Omit<Course, 'id'>

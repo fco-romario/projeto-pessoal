@@ -20,10 +20,10 @@
             @if (form().controls.name.hasError('required') && form().controls.name.touched) {
             <mat-error>Campo obrigatório</mat-error>
             }
-            @if (form().controls.name.hasError('minlength')) {
+            @if (form().controls.name.hasError('minlength')  && form().controls.name.touched) {
                 <mat-error>Mínimo de 3 caracteres</mat-error>
             }
-            @if (form().controls.name.hasError('maxlength')) {
+            @if (form().controls.name.hasError('maxlength')  && form().controls.name.touched) {
                 <mat-error>Máximo de 150 caracteres</mat-error>
             }
         </mat-form-field>
@@ -34,10 +34,10 @@
             formControlName="url"
             required>
 
-            @if (form().controls.url.hasError('required')) {
+            @if (form().controls.url.hasError('required') && form().controls.url.touched) {
             <mat-error>Campo obrigatório</mat-error>
             }
-            @if (form().controls.url.hasError('pattern')) {
+            @if (form().controls.url.hasError('pattern') && form().controls.url.touched) {
             <mat-error>Formato inválido. Esperado: https://</mat-error>
             }
         </mat-form-field>
@@ -49,7 +49,7 @@
             }
             </mat-select>
 
-            @if (form().controls.category.hasError('required') && form().controls.name.touched) {
+            @if (form().controls.category.hasError('required') && form().controls.category.touched) {
             <mat-error>Campo obrigatório</mat-error>
             }
         </mat-form-field>
@@ -60,7 +60,7 @@
             formControlName="status"
             required>
 
-            @if (form().controls.status.hasError('required')) {
+            @if (form().controls.status.hasError('required')  && form().controls.status.touched) {
             <mat-error>Campo obrigatório</mat-error>
             }
         </mat-form-field>
