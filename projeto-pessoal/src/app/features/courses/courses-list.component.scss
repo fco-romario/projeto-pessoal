@@ -2,23 +2,31 @@ ng-container {
     text-align: center;
 }
 
-mat-column-id {
+.mat-column-id {
     width: 5%;
 }
 
-mat-column-name {
+.mat-column-name {
     width: 25%;
 }
 
-mat-column-url {
-    width: 45%;
+.mat-column-url {
+    width: 25%;
 }
 
-mat-column-date {
+.mat-column-category {
+    width: 10%;
+}
+
+.mat-column-createdAt {
     width: 15%;
 }
 
-mat-column-actions {
+.mat-column-status {
+    width: 10%;
+}
+
+.mat-column-actions {
     width: 10%;
 }
 

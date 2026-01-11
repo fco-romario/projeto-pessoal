@@ -1,8 +1,8 @@
 <div class="mat-elevation-z8">
   <div class="save-btn-content">
-        <button matButton="elevated" class="save-btn-primary radius-btn-2px" (click)="onCreate()">
-            <mat-icon class="material-icons-outlined">{{ 'add' }}</mat-icon>
-        </button>
+    <button matButton="elevated" class="save-btn-primary radius-btn-2px" (click)="onCreate()">
+        <mat-icon class="material-icons-outlined">{{ 'add' }}</mat-icon>
+    </button>
   </div>
 
   <table mat-table [dataSource]="dataSource" matSort>
@@ -44,7 +44,7 @@
     </ng-container>
 
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Ações </th>
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
       <td mat-cell *matCellDef="let row">
         <div class="actions-container">
           <button matButton="elevated" class="save-btn-tertiary radius-btn-2px" (click)="onEdit(row)">

@@ -11,3 +11,32 @@
     align-items: center;
     margin-top: 8px;
 }
+
+.mat-column-name {
+    width: 30%;
+}
+
+.mat-column-url {
+    width: 30%;
+}
+
+.mat-column-category {
+    width: 10%;
+}
+
+.mat-column-status {
+    width: 15%;
+}
+
+.mat-column-actions {
+    width: 15%;
+}
+
+.actions-container {
+    display: flex;
+    gap: 8px;
+}
+
+.mat-mdc-raised-button .mat-icon {
+    margin: 0;
+}

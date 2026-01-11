@@ -69,5 +69,7 @@
 
 <estudo-create-course-list 
     [course]="courseToAdd()"
-    (salvar)="save($event)">
+    (salvar)="save($event)"
+    (edit)="edit($event)"
+    (delete)="delete($event)">
 </estudo-create-course-list>

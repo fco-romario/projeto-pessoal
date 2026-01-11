@@ -71,4 +71,12 @@ export class CreateCourseComponent {
     });
   }
 
+  edit(curso: CourseRequest) {
+    this.form().patchValue({...curso});
+  }
+
+  delete(curso: CourseRequest) {
+    // this.course.set(curso);
+
+  }
 }

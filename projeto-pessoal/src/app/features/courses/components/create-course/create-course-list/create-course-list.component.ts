@@ -15,9 +15,12 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class CreateCourseListComponent {
   salvar = output<CourseRequest[]>();
+
   course = input.required<CourseRequest | null>();
+  edit = output<CourseRequest>();
+  delete = output<CourseRequest>();
   
-  displayedColumns: string[] = ['name', 'category', 'url', 'status'];
+  displayedColumns: string[] = ['name', 'category', 'url', 'status', 'actions'];
 
   private data = signal<CourseRequest[]>([]);
   courses = this.data.asReadonly();
