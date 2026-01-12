@@ -13,6 +13,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       display: flex;
       align-items: center;
       width: 100%;
+      margin: 12px 0;
     
       &::before,
       &::after {

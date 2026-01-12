@@ -16,6 +16,7 @@
 @use 'styles/overrides/button.scss';
 @use 'styles/common/container.scss';
 @use 'styles/common/form-grid.scss';
+@use 'styles/common/separator.scss';
 
 html {
   @include mat.theme((
