@@ -19,7 +19,7 @@
 
                 <mat-icon matSuffix (click)="clickEvent($event)">{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
 
-                @if (form.controls.user.hasError('required')) {
+                @if (form.controls.password.hasError('required')) {
                     <mat-error>Campo obrigatório</mat-error>
                 }
             </mat-form-field>

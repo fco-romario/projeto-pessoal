@@ -45,7 +45,15 @@
       "name": "Curso de Angular para iniciantes",
       "url": "http://localhost:4200/courses/create-course",
       "category": "Front-End",
-      "status": "Concluído"
+      "status": "Andamento"
+    },
+    {
+      "id": "1a66",
+      "name": "Curso de TypeScript",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Front-End",
+      "status": "Concluido",
+      "createdAt": "2026-01-12T02:32:15.023Z"
     }
   ]
 }

@@ -10,12 +10,8 @@ import { CourseService } from '../../../shared/course/services/course.service';
 import { Course, CourseRequest } from '../../../shared/course/interfaces/course';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FeedbackService } from '../../../shared/feedback/services/feedback.service';
-
-enum Category {
-  FRONT_END = 'Front-End',
-  BACK_END = 'Back-End',
-  FULL_STACK = 'Full-Stack',
-}
+import { Category } from '../../../shared/course/interfaces/category';
+import { Status } from '../../../shared/course/interfaces/status';
 
 @Component({
   selector: 'estudo-edit-course',
@@ -31,7 +27,8 @@ export class EditCourseComponent {
   private readonly _feedbackService = inject(FeedbackService);
 
   readonly categories = Object.entries(Category).map(([key, value]) => value);
-
+  readonly statusList = Object.entries(Status).map(([key, value]) => value);
+  
   // course = this._activatedRoute.snapshot.data['course'];
 
   course = computed(() => this._activatedRoute.snapshot.data['course']);
