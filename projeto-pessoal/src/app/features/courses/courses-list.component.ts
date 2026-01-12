@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { Course } from '../../shared/course/interfaces/course';
-import { CourseService } from '../../shared/course/services/course.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { Course } from '../../shared/course/interfaces/course';
+import { CourseService } from '../../shared/course/services/course.service';
 import { FeedbackService } from '../../shared/feedback/services/feedback.service';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { CreateCourseComponent } from "./components/create-course/create-course.component";
+import { CreateCourseComponent } from "./create-course/create-course.component";
 import { CoursesComponent } from "./courses-list.component";
 
 export default [
@@ -10,7 +10,7 @@ export default [
   },
   { 
     path: 'create-course',
-    data: { breadcrumb: 'Lista', title: 'Lista' },
+    data: { breadcrumb: 'Criar Cursos', title: 'Criar Cursos' },
     component: CreateCourseComponent
   }
 ] as Routes;

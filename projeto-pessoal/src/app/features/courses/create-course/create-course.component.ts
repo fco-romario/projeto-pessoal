@@ -4,13 +4,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatInputModule } from '@angular/material/input';
-import { SeparatorComponent } from '../../../../shared/separator/separator.component';
+import { SeparatorComponent } from '../../../shared/separator/separator.component';
 import { MatSelectModule } from "@angular/material/select";
-import { CreateCourseListComponent } from './create-course-list/create-course-list.component';
-import { CourseService } from '../../../../shared/course/services/course.service';
-import { CourseRequest } from '../../../../shared/course/interfaces/course';
+import { CreateCourseListComponent } from '../components/create-course-list/create-course-list.component';
+import { CourseService } from '../../../shared/course/services/course.service';
+import { CourseRequest } from '../../../shared/course/interfaces/course';
 import { Router } from '@angular/router';
-import { FeedbackService } from '../../../../shared/feedback/services/feedback.service';
+import { FeedbackService } from '../../../shared/feedback/services/feedback.service';
 
 enum Category {
   FRONT_END = 'Front-End',
