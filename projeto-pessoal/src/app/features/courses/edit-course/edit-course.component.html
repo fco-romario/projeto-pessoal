@@ -1,0 +1,68 @@
+<form [formGroup]="form()">
+    <div >
+        <button matButton="elevated" class="save-btn-primary radius-btn-2px" [disabled]="form().invalid" (click)="salvar()">
+            <mat-icon class="material-icons-outlined">add</mat-icon>Salvar
+        </button>
+    </div>
+
+    <estudo-separator>
+        <span class="session-title" >Dados Docurso</span>
+     </estudo-separator>
+
+     <div class="form-grid">
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input 
+            matInput 
+            formControlName="name"
+            required>
+
+            @if (form().controls.name.hasError('required') && form().controls.name.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+            @if (form().controls.name.hasError('minlength')  && form().controls.name.touched) {
+                <mat-error>Mínimo de 3 caracteres</mat-error>
+            }
+            @if (form().controls.name.hasError('maxlength')  && form().controls.name.touched) {
+                <mat-error>Máximo de 150 caracteres</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Url</mat-label>
+            <input 
+            matInput 
+            formControlName="url"
+            required>
+
+            @if (form().controls.url.hasError('required') && form().controls.url.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+            @if (form().controls.url.hasError('pattern') && form().controls.url.touched) {
+            <mat-error>Formato inválido. Esperado: https://</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Categoria</mat-label>
+            <mat-select formControlName="category">
+            @for (category of categories; track category) {
+                <mat-option [value]="category">{{category}}</mat-option>
+            }
+            </mat-select>
+
+            @if (form().controls.category.hasError('required') && form().controls.category.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+        </mat-form-field>
+        <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Status</mat-label>
+            <input 
+            matInput 
+            formControlName="status"
+            required>
+
+            @if (form().controls.status.hasError('required')  && form().controls.status.touched) {
+            <mat-error>Campo obrigatório</mat-error>
+            }
+        </mat-form-field>
+     </div>
+</form>

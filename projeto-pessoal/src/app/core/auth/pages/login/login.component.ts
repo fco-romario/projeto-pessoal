@@ -20,7 +20,6 @@ export class LoginComponent {
   private readonly _activatedRoute = inject(ActivatedRoute);
   private readonly _router = inject(Router);
   private readonly _loginFacadeService = inject(LoginFacadeService);
-  private route = inject(ActivatedRoute);
  
   hide = signal(true);
 
@@ -38,7 +37,7 @@ export class LoginComponent {
     this._loginFacadeService.login({ ...this.form.value } as UserCredentials)
     .subscribe({
       next: () => { 
-        const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        const returnUrl = this._activatedRoute.snapshot.queryParams['returnUrl'] || '/';
 
         this._router.navigate([returnUrl]);
       },

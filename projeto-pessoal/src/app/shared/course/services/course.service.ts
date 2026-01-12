@@ -13,6 +13,9 @@ export class CourseService {
   getAllCourses(): Observable<Course[]> {
     return this._http.get<Course[]>(`${this._baseUrl}`)
   }
+  getCourseById(id: number): Observable<Course> {
+    return this._http.get<Course>(`${this._baseUrl}/${id}`)
+  }
   savaCourses(courses: CourseRequest[]) {
     const coursesToSave = courses.map(course => {
       course.createdAt = new Date();
@@ -29,5 +32,9 @@ export class CourseService {
 
   deleteCourse(courseId: string) {
     return this._http.delete(`${this._baseUrl}/${courseId}`)
+  }
+
+  updateCourse(course: Course) {
+    return this._http.put(`${this._baseUrl}/${course.id}`, course)
   }
 }

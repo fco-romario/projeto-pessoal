@@ -11,7 +11,7 @@
     {
       "id": "bbb4",
       "name": "Romário Alves de Lima ",
-      "mathersName": "Maria",
+      "mathersName": "Maria alves",
       "gender": "Masculino",
       "phoneNumber": "8599999999999",
       "cpf": "1111111111111111",
@@ -45,8 +45,7 @@
       "name": "Curso de Angular para iniciantes",
       "url": "http://localhost:4200/courses/create-course",
       "category": "Front-End",
-      "status": "Concluído",
-      "createdAt": "2026-01-11T19:32:41.542Z"
+      "status": "Concluído"
     }
   ]
 }

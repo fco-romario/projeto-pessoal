@@ -46,8 +46,8 @@ export class CoursesComponent {
       }
     })
   }
-  onEdit(_t65: any) {
-    throw new Error('Method not implemented.');
+  onEdit(course: Course) {
+    this._router.navigate(['edit-course', course.id], { relativeTo: this._activatedRoute });
   }
 
   getAllCourses() {
