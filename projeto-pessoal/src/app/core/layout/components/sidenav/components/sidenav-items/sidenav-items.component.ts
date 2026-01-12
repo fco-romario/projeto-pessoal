@@ -3,10 +3,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { LoggedInUserStoreService } from '../../../../../auth/stores/logged-in-user-store.service';
-import { AuthService } from '../../../../../auth/services/auth.service';
-import { tap } from 'rxjs';
-import { TokenLocalStorageStore } from '../../../../../auth/stores/token-local-storage-store.service';
 import { LogoutFacadeService } from '../../../../../auth/facades/logout-facade.service';
+import { SidenavVisibilityStoreService } from '../../../stores/sidenav-visibility-store.service';
 
 @Component({
   selector: 'estudo-sidenav-items',
@@ -16,6 +14,7 @@ import { LogoutFacadeService } from '../../../../../auth/facades/logout-facade.s
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidenavItemsComponent {
+  private _sidenavVisibilityStore = inject(SidenavVisibilityStoreService);
   private _logoutFacadeService = inject(LogoutFacadeService);
   private _loggedInUserStoreService = inject(LoggedInUserStoreService);
   private _router = inject(Router);
@@ -41,13 +40,13 @@ export class SidenavItemsComponent {
   ]);
 
   closeSidenav() {
-    throw new Error('Method not implemented.');
+    this._sidenavVisibilityStore.close();
   }
 
   logout() {
     this._logoutFacadeService.logout()
       .subscribe({
         next: () => this._router.navigate(['/auth/login']),
-      });     
+    });     
   }
 }
