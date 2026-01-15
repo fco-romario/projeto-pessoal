@@ -52,8 +52,7 @@
       "name": "Curso de TypeScript",
       "url": "http://localhost:4200/courses/create-course",
       "category": "Front-End",
-      "status": "Concluido",
-      "createdAt": "2026-01-12T02:32:15.023Z"
+      "status": "Concluido"
     }
   ]
 }
