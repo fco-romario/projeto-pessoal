@@ -13,8 +13,12 @@ export class CourseService {
   getAllCourses(): Observable<Course[]> {
     return this._http.get<Course[]>(`${this._baseUrl}`)
   }
-  getCourseById(id: number): Observable<Course> {
+  getCourseById(id: string): Observable<Course> {
     return this._http.get<Course>(`${this._baseUrl}/${id}`)
+  }
+  getCourseByPersonId(personId: string): Observable<Course[]> {
+    // return this._http.get<Course>(`${this._baseUrl}/${personId}?_embed=people`)
+    return this._http.get<Course[]>(`${this._baseUrl}?personId=${personId}&_embed=people`);
   }
   savaCourses(courses: CourseRequest[]) {
     const coursesToSave = courses.map(course => {

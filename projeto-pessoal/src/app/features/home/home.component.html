@@ -1,8 +1,11 @@
 
+ Front:  {{this.countCategoryFront()}}
+ back:  {{this.countCategoryBack()}}
+ full:  {{this.countCategoryFull()}}
+
 <mat-grid-list cols="4" rowHeight="100px" gutterSize="16px">
   <mat-grid-tile [colspan]="tileHeader.cols" [rowspan]="tileHeader.rows" [style.background]="tileHeader.color"></mat-grid-tile> 
-  
-  @for (tile of tiles; track tile) {
+  @for (tile of tiles(); track tile) {
     <mat-grid-tile [colspan]="tile.cols" [rowspan]="tile.rows" [style.background]="">
       <estudo-chart [strategy]="tile.strategy" [data]="tile.config"></estudo-chart>
     </mat-grid-tile>

@@ -45,14 +45,99 @@
       "name": "Curso de Angular para iniciantes",
       "url": "http://localhost:4200/courses/create-course",
       "category": "Front-End",
-      "status": "Andamento"
+      "status": "Andamento",
+      "createdAt": "2026-01-05T00:00:00.000Z",
+      "personId": "bbb4"
     },
     {
-      "id": "1a66",
+      "id": "1aq6",
       "name": "Curso de TypeScript",
       "url": "http://localhost:4200/courses/create-course",
+      "category": "Back-End",
+      "status": "Concluido",
+      "createdAt": "2026-03-21T00:00:00.000Z",
+      "personId": "bbb4"
+    },
+    {
+      "id": "cre5",
+      "name": "Curso de Angular para iniciantes",
+      "url": "http://localhost:4200/courses/create-course",
       "category": "Front-End",
-      "status": "Concluido"
+      "status": "Andamento",
+      "createdAt": "2026-07-22T00:00:00.000Z",
+      "personId": "bbb4"
+    },
+    {
+      "id": "1t66",
+      "name": "Curso de TypeScript",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Full-Stack",
+      "status": "Concluido",
+      "createdAt": "2026-11-04T00:00:00.000Z",
+      "personId": "bbb4"
+    },
+    {
+      "id": "cdy5",
+      "name": "Curso de Angular para iniciantes",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Front-End",
+      "status": "Andamento",
+      "createdAt": "2026-12-01T00:00:00.000Z",
+      "personId": "bbb4"
+    },
+    {
+      "id": "1a6u",
+      "name": "Curso de TypeScript",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Back-End",
+      "status": "Concluido",
+      "createdAt": "2026-06-13T00:00:00.000Z",
+      "personId": "bbb4"
+    },
+    {
+      "id": "cdeo",
+      "name": "Curso de Angular para iniciantes",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Front-End",
+      "status": "Andamento",
+      "createdAt": "2026-08-05T00:00:00.000Z",
+      "personId": "bbb4"
+    },
+    {
+      "id": "1ah6",
+      "name": "Curso de TypeScript",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Full-Stack",
+      "status": "Concluido",
+      "createdAt": "2026-10-26T00:00:00.000Z",
+      "personId": "bbb4"
+    },
+    {
+      "id": "cvy5",
+      "name": "Curso de Angular para iniciantes",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Front-End",
+      "status": "Andamento",
+      "createdAt": "2026-12-01T00:00:00.000Z",
+      "personId": "bbb4"
+    },
+    {
+      "id": "1anu",
+      "name": "Curso de TypeScript",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Back-End",
+      "status": "Concluido",
+      "createdAt": "2026-06-13T00:00:00.000Z",
+      "personId": "bbb4"
+    },
+    {
+      "id": "cmeo",
+      "name": "Curso de Angular para iniciantes",
+      "url": "http://localhost:4200/courses/create-course",
+      "category": "Front-End",
+      "status": "Andamento",
+      "createdAt": "2026-08-05T00:00:00.000Z",
+      "personId": "bbb4"
     }
   ]
 }
