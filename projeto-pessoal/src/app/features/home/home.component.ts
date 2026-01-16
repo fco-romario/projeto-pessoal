@@ -1,15 +1,15 @@
 import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ChartComponent } from '../../shared/charts/components/chart.component';
-import { PieStrategy } from '../../shared/charts/class/pie-strategy';
-import { BarStrategy } from '../../shared/charts/class/bar-strategy';
 import { ChartStrategy } from '../../shared/charts/interfaces/i-chart-strategy';
-import { LineStrategy } from '../../shared/charts/class/line-strategy';
 import { ChartConfig } from '../../shared/charts/interfaces/i-chart-config';
 import { DateUtils } from '../../shared/utils/date/get-months';
 import { CourseService } from '../../shared/course/services/course.service';
 import { Course } from '../../shared/course/interfaces/course';
 import { Category } from '../../shared/course/enums/category';
+import { BarStrategy } from '../../shared/charts/strategies/bar-strategy';
+import { LineStrategy } from '../../shared/charts/strategies/line-strategy';
+import { PieStrategy } from '../../shared/charts/strategies/pie-strategy';
 
 export interface Tile {
   strategy: ChartStrategy;
@@ -60,8 +60,9 @@ export class HomeComponent implements OnInit {
     
     if (date.getFullYear() === currentYear) {
       const month = date.getMonth(); 
+      monthlyData[month] += 1;
     }
-  });
+    });
 
     return monthlyData;
   });
@@ -124,6 +125,7 @@ export class HomeComponent implements OnInit {
     this._courseService.getAllCourses().subscribe({
       next: (courses) => {
         this.courses.set(courses);
+        
       },
       error: (error) => console.log(error)
     });
