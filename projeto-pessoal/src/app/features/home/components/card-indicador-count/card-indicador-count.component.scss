@@ -55,5 +55,7 @@ mat-card-content {
 mat-card-footer {
   color: rgb(73, 208, 73);
 }
-//#FFC234
-//#059BFF
+
+.indicador-card-button {
+  color: var(--custom-color-sidenav-active);
+}
