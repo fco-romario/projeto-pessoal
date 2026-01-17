@@ -1,6 +1,7 @@
 .indicador-card {
   height: 100px;
   width: 230px;
+  // background: rgba(153, 102, 255, 0.2);
 }
 
 .mat-mdc-card-header {
@@ -16,6 +17,10 @@ mat-card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  mat-card-title {
+    color: var(--custom-color-content-header);
+  }
 
   .mat-mdc-card-header {
     display: flex;
@@ -35,5 +40,20 @@ mat-card-content {
 
   p {
     margin: 0;
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: bold;
   }
+
 }
+
+.indicador-card {
+  // border-bottom: 3px solid #FF4069;
+  border-radius: 6px;
+}
+
+mat-card-footer {
+  color: rgb(73, 208, 73);
+}
+//#FFC234
+//#059BFF

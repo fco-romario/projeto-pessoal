@@ -1,20 +1,14 @@
-<mat-card class="indicador-card" appearance="outlined">
+<mat-card class="indicador-card" appearance="outlined" [style.border-bottom]=" '3px solid ' + categoryColor()">
   <mat-card-header>
-    <mat-card-title>Categoria</mat-card-title>
-    <button matIconButton>
+    <mat-card-title>{{category()}}</mat-card-title>
+    <button class="" matIconButton>
       <mat-icon>settings_24</mat-icon>
     </button>
   </mat-card-header>
   <mat-card-content>
-    <p>{{indicardorCount()}}</p>
-     <!-- 8 -->
+    <p [style.color]="categoryColor()">{{indicardorCount()}}</p>
   </mat-card-content>
-  <mat-card-footer>
-    <!-- <mat-chip-set aria-label="Chihuahua traits">
-      <mat-chip>charming</mat-chip>
-      <mat-chip>graceful</mat-chip>
-      <mat-chip>sassy</mat-chip>
-    </mat-chip-set> -->
-    x adicionado nos ultimos 30 dias
-  </mat-card-footer>
+  <!-- <mat-card-footer>
+    Quantodade de cursos por categoria
+  </mat-card-footer> -->
 </mat-card>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
@@ -15,5 +15,12 @@ import { MatChipsModule } from '@angular/material/chips';
 export class CardIndicadorCountComponent {
   indicardorCount = input.required<number>();
   category = input.required<Category>();
-
+  
+  categoryColor = computed(() => {
+    switch(this.category()) { 
+      case Category.FRONT_END: return '#FF4069';
+      case Category.BACK_END: return '#FFC234';
+      case Category.FULL_STACK: return '#059BFF';
+    }
+  });
 }

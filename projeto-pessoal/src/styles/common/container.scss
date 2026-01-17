@@ -8,6 +8,7 @@
     .container-content {
         margin: 16px;
         min-height: 100%;
+        background: var(--custom-color-container-content);
         border: 1px solid var(--custom-color-content-header);
 
         mat-toolbar {
