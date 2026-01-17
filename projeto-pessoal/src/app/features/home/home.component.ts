@@ -10,6 +10,10 @@ import { Category } from '../../shared/course/enums/category';
 import { BarStrategy } from '../../shared/charts/strategies/bar-strategy';
 import { LineStrategy } from '../../shared/charts/strategies/line-strategy';
 import { PieStrategy } from '../../shared/charts/strategies/pie-strategy';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { CardIndicadorCountComponent } from './components/card-indicador-count/card-indicador-count.component';
 
 export interface Tile {
   strategy: ChartStrategy;
@@ -27,7 +31,7 @@ export interface TileHeader {
 
 @Component({
   selector: 'estudo-home',
-  imports: [MatGridListModule, ChartComponent],
+  imports: [MatGridListModule, ChartComponent, MatCardModule, CardIndicadorCountComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -35,6 +39,7 @@ export interface TileHeader {
 export class HomeComponent implements OnInit {
   private readonly _courseService = inject(CourseService);
   private courses = signal<Course[]>([]);
+  readonly category = Category;
 
   countCategoryFront = computed(() => {
     return this.courses()
@@ -113,19 +118,19 @@ export class HomeComponent implements OnInit {
       borderWidth: 1
   }) as ChartConfig);
 
-  tileHeader: TileHeader = {text: 'One', cols: 4, rows: 1, color: 'lightblue'}
+  // tileHeader: TileHeader = {text: 'One', cols: 4, rows: 1, color: 'lightblue'}
+  tileHeader: TileHeader = {text: 'One', cols: 4, rows: 1, color: ''}
 
   tiles = computed<Tile[]>(() => [
-    { strategy: new LineStrategy(), cols: 3, rows: 3, config: this.lineData() },
+    { strategy: new LineStrategy(), cols: 3, rows: 2, config: this.lineData() },
     { strategy: new PieStrategy(), cols: 1, rows: 4, config: this.pieData() },
-    { strategy: new BarStrategy(), cols: 3, rows: 3, config: this.bartData() },
+    { strategy: new BarStrategy(), cols: 3, rows: 2, config: this.bartData()},
   ]);
 
   ngOnInit(): void {
     this._courseService.getAllCourses().subscribe({
       next: (courses) => {
         this.courses.set(courses);
-        
       },
       error: (error) => console.log(error)
     });

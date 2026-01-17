@@ -1,0 +1,39 @@
+.indicador-card {
+  height: 100px;
+  width: 230px;
+}
+
+.mat-mdc-card-header {
+  display: flex;
+  padding: 0;
+}
+
+.mat-mdc-card-content {
+  padding: 0;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .mat-mdc-card-header {
+    display: flex;
+    padding: 0;
+  }
+}
+
+mat-card {
+  padding: 4px;
+  gap: 4px;
+}
+
+mat-card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    margin: 0;
+  }
+}
