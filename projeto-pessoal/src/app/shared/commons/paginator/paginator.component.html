@@ -1,0 +1,14 @@
+<div class="mat-elevation-z8">
+    <ng-content></ng-content>
+
+    <mat-paginator
+    [length]="totalElements()"
+    [pageSize]="pageSize()"
+    [disabled]="false"
+    [showFirstLastButtons]="true"
+    [pageSizeOptions]="pageSizeOptions()"
+    [pageIndex]="pageIndex()"
+    (page)="onPageChange($event)"
+    aria-label="Selecionar página">
+    </mat-paginator>
+</div>

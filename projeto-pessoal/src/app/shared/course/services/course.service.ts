@@ -1,7 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { Course, CourseRequest } from '../interfaces/course';
-import { forkJoin, Observable } from 'rxjs';
+import { forkJoin, map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { PageJsonServer } from '../../commons/paginator/interfaces/i-page-';
 
 @Injectable({
   providedIn: 'root',
@@ -13,6 +14,17 @@ export class CourseService {
   getAllCourses(): Observable<Course[]> {
     return this._http.get<Course[]>(`${this._baseUrl}`)
   }
+
+  getAllCoursesPaginated(page: number, size: number): Observable<PageJsonServer<Course>> {
+    return this._http.get<PageJsonServer<Course>>(`${this._baseUrl}`,
+      { 
+        params: { 
+          _page: page.toString(),
+          _per_page: size.toString()
+        } 
+      });
+  }
+  
   getCourseById(id: string): Observable<Course> {
     return this._http.get<Course>(`${this._baseUrl}/${id}`)
   }

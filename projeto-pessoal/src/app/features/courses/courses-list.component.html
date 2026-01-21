@@ -1,4 +1,4 @@
-<div class="mat-elevation-z8">
+<estudo-paginator [paginated]="paginated()" (pageEvent)="onPageChange($event)">
   <div class="save-btn-content">
     <button matButton="elevated" class="save-btn-primary radius-btn-2px" (click)="onCreate()">
         <mat-icon class="material-icons-outlined">{{ 'add' }}</mat-icon>
@@ -65,5 +65,4 @@
       <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
     </tr> -->
   </table>
-
-</div>
+</estudo-paginator>
