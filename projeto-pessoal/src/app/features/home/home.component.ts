@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, OnInit, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, effect, inject, OnInit, signal } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { ChartComponent } from '../../shared/charts/components/chart.component';
 import { ChartStrategy } from '../../shared/charts/interfaces/i-chart-strategy';
@@ -14,6 +14,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { CardIndicadorCountComponent } from './components/card-indicador-count/card-indicador-count.component';
+import { rxResource } from '@angular/core/rxjs-interop';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { debounceTime, delay } from 'rxjs';
 
 export interface Tile {
   strategy: ChartStrategy;
@@ -31,14 +34,23 @@ export interface TileHeader {
 
 @Component({
   selector: 'estudo-home',
-  imports: [MatGridListModule, ChartComponent, MatCardModule, CardIndicadorCountComponent],
+  imports: [MatGridListModule, ChartComponent, MatCardModule, CardIndicadorCountComponent, MatProgressSpinnerModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent implements OnInit {
   private readonly _courseService = inject(CourseService);
-  private courses = signal<Course[]>([]);
+  // private courses = signal<Course[]>([]);
+
+  private coursesResource = rxResource({
+    stream: () => this._courseService.getAllCourses().pipe(delay(1000)),
+    defaultValue: [],
+  });
+
+  isLoading = computed(() => this.coursesResource.isLoading());
+  courses = computed(() => this.coursesResource.value());
+
   readonly category = Category;
 
   countCategoryFront = computed(() => {
@@ -128,12 +140,12 @@ export class HomeComponent implements OnInit {
   ]);
 
   ngOnInit(): void {
-    this._courseService.getAllCourses().subscribe({
-      next: (courses) => {
-        this.courses.set(courses);
-      },
-      error: (error) => console.log(error)
-    });
+  //   this._courseService.getAllCourses().subscribe({
+  //     next: (courses) => {
+  //       this.courses.set(courses);
+  //     },
+  //     error: (error) => console.log(error)
+  //   });
   }
 
 }

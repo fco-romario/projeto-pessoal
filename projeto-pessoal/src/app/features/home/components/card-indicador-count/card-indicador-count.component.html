@@ -6,7 +6,11 @@
     </button>
   </mat-card-header>
   <mat-card-content>
-    <p [style.color]="categoryColor()">{{indicardorCount()}}</p>
+    @if (isLoading()) {
+      <mat-spinner diameter="20"></mat-spinner>
+    } @else {
+      <p [style.color]="categoryColor()">{{indicardorCount()}}</p>
+    }
   </mat-card-content>
   <!-- <mat-card-footer>
     Quantodade de cursos por categoria
