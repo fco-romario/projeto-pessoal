@@ -1,7 +1,7 @@
 <form [formGroup]="form">
 
     <div class="save-btn-content">
-        <button matButton="elevated" class="save-btn-primary" (click)="update()" [disabled]="this.edit() && form.invalid">
+        <button matButton="elevated" class="save-btn-primary radius-btn-2px" (click)="update()" [disabled]="this.edit() && form.invalid">
             {{ edit() ? 'Salvar' : 'Editar' }}
             <mat-icon class="material-icons-outlined">{{ edit() ? 'add' : 'edit' }}</mat-icon>
         </button>
