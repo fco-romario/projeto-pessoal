@@ -47,3 +47,14 @@ ng-container {
 //         border-radius: 2px;
 //     }
 // }
+
+table {
+    width: 100%;
+    min-width: 600px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}

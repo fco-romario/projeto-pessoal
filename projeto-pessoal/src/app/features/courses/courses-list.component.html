@@ -5,8 +5,9 @@
     </button>
   </div>
 
-  <table mat-table [dataSource]="dataSource" matSort>
+  <div  class="table-container">
 
+  <table mat-table [dataSource]="dataSource" matSort>
     <!-- ID Column -->
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
@@ -64,5 +65,7 @@
     <!-- <tr class="mat-row" *matNoDataRow>
       <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
     </tr> -->
-  </table>
+    </table>
+  </div>
+
 </estudo-paginator>
