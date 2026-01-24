@@ -17,6 +17,7 @@ import { CardIndicadorCountComponent } from './components/card-indicador-count/c
 import { rxResource } from '@angular/core/rxjs-interop';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { debounceTime, delay } from 'rxjs';
+import { MobileLayoutService } from '../../core/layout/services/mobile-layout.service';
 
 export interface Tile {
   strategy: ChartStrategy;
@@ -41,7 +42,7 @@ export interface TileHeader {
 })
 export class HomeComponent implements OnInit {
   private readonly _courseService = inject(CourseService);
-  // private courses = signal<Course[]>([]);
+  private readonly _mobileLayoutService = inject(MobileLayoutService);
 
   private coursesResource = rxResource({
     stream: () => this._courseService.getAllCourses().pipe(delay(1000)),
@@ -130,15 +131,21 @@ export class HomeComponent implements OnInit {
       borderWidth: 1
   }) as ChartConfig);
 
-  // tileHeader: TileHeader = {text: 'One', cols: 4, rows: 1, color: 'lightblue'}
-  tileHeader: TileHeader = {text: 'One', cols: 4, rows: 1, color: ''}
+  tileHeader = computed<TileHeader>(() => (
+    {
+      text: 'One',
+      cols: 4,
+      rows: (this._mobileLayoutService.medium() || this._mobileLayoutService.large()) ? 1 : 3,
+      color: ''
+    }
+  ));
 
   tiles = computed<Tile[]>(() => [
-    { strategy: new LineStrategy(), cols: 3, rows: 2, config: this.lineData() },
-    { strategy: new PieStrategy(), cols: 1, rows: 4, config: this.pieData() },
-    { strategy: new BarStrategy(), cols: 3, rows: 2, config: this.bartData()},
+    { strategy: new LineStrategy(), cols: (this._mobileLayoutService.medium() || this._mobileLayoutService.large()) ? 3 : 4, rows: (this._mobileLayoutService.medium() || this._mobileLayoutService.large()) ? 2 : 4, config: this.lineData() },
+    { strategy: new PieStrategy(), cols: (this._mobileLayoutService.medium() || this._mobileLayoutService.large()) ? 1 : 4, rows: (this._mobileLayoutService.medium() || this._mobileLayoutService.large()) ? 4 : 4, config: this.pieData() },
+    { strategy: new BarStrategy(), cols: (this._mobileLayoutService.medium() || this._mobileLayoutService.large()) ? 3 : 4, rows: (this._mobileLayoutService.medium() || this._mobileLayoutService.large()) ? 2 : 4, config: this.bartData()},
   ]);
-
+  
   ngOnInit(): void {
   //   this._courseService.getAllCourses().subscribe({
   //     next: (courses) => {

@@ -1,4 +1,4 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { computed, inject, Injectable } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
@@ -25,4 +25,18 @@ export class MobileLayoutService {
 
   //     return toSignal(matches, { requireSync: true });
   // }
+
+  xSmall = computed(() => this.size()?.breakpoints[Breakpoints.XSmall]);
+  small = computed(() => this.size()?.breakpoints[Breakpoints.Small]);
+  medium = computed(() => this.size()?.breakpoints[Breakpoints.Medium]);
+  large = computed(() => this.size()?.breakpoints[Breakpoints.Large]);
+
+  private readonly size = toSignal(
+    this._breakpointObserver.observe([
+      Breakpoints.XSmall, // Celular
+      Breakpoints.Small,  // Tablet
+      Breakpoints.Medium, // Desktop Pequeno
+      Breakpoints.Large   // Desktop Grande
+    ])
+  );
 }

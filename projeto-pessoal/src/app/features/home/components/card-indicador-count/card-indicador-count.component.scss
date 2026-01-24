@@ -1,6 +1,8 @@
 .indicador-card {
   height: 100px;
   width: 230px;
+  margin: 4px 0;
+
   // background: rgba(153, 102, 255, 0.2);
 }
 
@@ -59,3 +61,4 @@ mat-card-footer {
 .indicador-card-button {
   color: var(--custom-color-sidenav-active);
 }
+

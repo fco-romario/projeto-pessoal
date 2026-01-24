@@ -1,6 +1,6 @@
 <mat-grid-list cols="4" rowHeight="100px" gutterSize="16px">
 
-  <mat-grid-tile [colspan]="tileHeader.cols" [rowspan]="tileHeader.rows" [style.background]="tileHeader.color">
+  <mat-grid-tile [colspan]="tileHeader().cols" [rowspan]="tileHeader().rows" [style.background]="tileHeader().color">
     <div class="dashboad-indicador-count">
       <estudo-card-indicador-count [isLoading]="isLoading()" [category]="category.FRONT_END" [indicardorCount]="countCategoryFront()"></estudo-card-indicador-count>
       <estudo-card-indicador-count [isLoading]="isLoading()" [category]="category.BACK_END" [indicardorCount]="countCategoryBack()"></estudo-card-indicador-count>
