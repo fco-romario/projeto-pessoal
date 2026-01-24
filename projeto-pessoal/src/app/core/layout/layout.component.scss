@@ -6,8 +6,21 @@
     font-weight: normal;
     border-left: none;
     border-right: none;
+
+    display: flex;
+    gap: 4px;
 }
 
 .content-outlet {
     margin: 16px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--custom-color-sub-header-text);
+
+    &:hover {
+        color: var(--custom-color-btn-tertiary);
+        text-decoration: underline;
+    }
 }

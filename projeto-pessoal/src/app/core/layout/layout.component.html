@@ -3,9 +3,14 @@
 <estudo-sidenav>
     <div class="container">
         <mat-toolbar class="container-header">
-            <span>{{ tree() }}</span>
+            @for(tree of tree(); track tree; let i = $index) {
+                @if(i > 0) {
+                    <p> {{ '•' }} </p>
+                }
+                <a [routerLink]="redirect(tree)"> {{ tree }} </a>
+            }
         </mat-toolbar>
-
+        
         <div class="container-content">
                 <mat-toolbar>
                     <span>{{ lastOnetree() }}</span>
