@@ -1,0 +1,41 @@
+<form [formGroup]="form()">
+    <estudo-separator>
+        <span class="session-title" > Filtros </span>
+     </estudo-separator>
+
+     <div class="form-grid">
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input 
+            matInput 
+            formControlName="name">
+        </mat-form-field>
+        <mat-form-field class="col-6" appearance="outline">
+            <mat-label>Url</mat-label>
+            <input 
+            matInput 
+            formControlName="url">
+        </mat-form-field>
+        <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Categoria</mat-label>
+            <mat-select formControlName="category">
+            @for (category of categories; track category) {
+                <mat-option [value]="category">{{category}}</mat-option>
+            }
+            </mat-select>
+
+        </mat-form-field>
+        <mat-form-field class="col-4" appearance="outline">
+            <mat-label>Status</mat-label>
+             <mat-select formControlName="status">
+
+            @for (status of statusList; track status) {
+                <mat-option [value]="status">{{status}}</mat-option>
+            }
+            </mat-select>
+        </mat-form-field>
+     </div>
+</form>
+<button matButton="elevated" class="save-btn-primary radius-btn-2px" (click)="search()" [disabled]="false">
+    <mat-icon class="material-icons-outlined">search</mat-icon> Pesquisar
+</button>
