@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { Course, CourseRequest } from '../interfaces/course';
+import { Course, CourseFilter, CourseRequest } from '../interfaces/course';
 import { forkJoin, map, Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { PageJsonServer } from '../../commons/paginator/interfaces/i-page-';
 
 @Injectable({
@@ -15,14 +15,44 @@ export class CourseService {
     return this._http.get<Course[]>(`${this._baseUrl}`)
   }
 
-  getAllCoursesPaginated(page: number, size: number): Observable<PageJsonServer<Course>> {
-    return this._http.get<PageJsonServer<Course>>(`${this._baseUrl}`,
-      { 
-        params: { 
-          _page: page.toString(),
-          _per_page: size.toString()
-        } 
-      });
+  getAllCoursesPaginated(page: number, size: number, courseFilterDto?: CourseFilter): Observable<PageJsonServer<Course>> {
+    let params = new HttpParams()
+    .set('_page', page.toString())
+    .set('_limit', size.toString()); // v0.17 usa _limit
+
+    if (courseFilterDto?.name) {
+      params = params.set('name_like', courseFilterDto.name); // v0.17 usa _like
+    }
+    if (courseFilterDto?.category) {
+      params = params.set('category_like', courseFilterDto.category);
+    }
+    if (courseFilterDto?.url) {
+      params = params.set('url_like', courseFilterDto.url);
+    }
+    if (courseFilterDto?.status) {
+      params = params.set('status_like', courseFilterDto.status);
+    }
+
+    return this._http.get<Course[]>(this._baseUrl, { 
+      params, 
+      observe: 'response' // Necessário para ler o cabeçalho X-Total-Count
+    }).pipe(
+      map(res => {
+        const totalItems = Number(res.headers.get('X-Total-Count') || 0);
+        const totalPages = Math.ceil(totalItems / size);
+
+        return {
+          first: 1,
+          prev: page > 1 ? page - 1 : 1,
+          next: page < totalPages ? page + 1 : page,
+          last: totalPages,
+          pages: totalPages,
+          items: totalItems,
+          number: page,
+          data: res.body || []
+        } as PageJsonServer<Course>;
+      })
+    );
   }
   
   getCourseById(id: string): Observable<Course> {

@@ -6,9 +6,9 @@ import { MatSelectModule } from '@angular/material/select';
 import { Category } from '../../../../shared/course/enums/category';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { CourseFilter } from '../../../../shared/course/interfaces/course copy';
 import { MatButtonModule } from '@angular/material/button';
 import { Status } from '../../../../shared/course/enums/status';
+import { CourseFilter } from '../../../../shared/course/interfaces/course';
 
 @Component({
   selector: 'estudo-courses-filter',

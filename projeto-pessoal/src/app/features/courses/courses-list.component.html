@@ -3,6 +3,8 @@
     <button matButton="elevated" class="save-btn-primary radius-btn-2px" (click)="onCreate()">
         <mat-icon class="material-icons-outlined">{{ 'add' }}</mat-icon>
     </button>
+
+    <estudo-courses-filter (onSearch)="search($event)"/>
   </div>
 
   <div  class="table-container">

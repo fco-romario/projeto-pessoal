@@ -4,17 +4,18 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
-import { Course } from '../../shared/course/interfaces/course';
+import { Course, CourseFilter } from '../../shared/course/interfaces/course';
 import { CourseService } from '../../shared/course/services/course.service';
 import { FeedbackService } from '../../shared/feedback/services/feedback.service';
 import { PaginatorComponent } from '../../shared/commons/paginator/paginator.component';
 import { Page } from '../../shared/commons/paginator/interfaces/i-page-json-server';
 import { map } from 'rxjs';
 import { PageEvent } from '@angular/material/paginator';
+import { CoursesFilterComponent } from "./components/courses-filter/courses-filter.component";
 
 @Component({
   selector: 'estudo-courses',
-  imports: [MatTableModule, MatButtonModule, MatIconModule, DatePipe, PaginatorComponent],
+  imports: [MatTableModule, MatButtonModule, MatIconModule, DatePipe, PaginatorComponent, CoursesFilterComponent],
   templateUrl: './courses-list.component.html',
   styleUrl: './courses-list.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -63,8 +64,8 @@ export class CoursesComponent {
     this._router.navigate(['edit-course', course.id], { relativeTo: this._activatedRoute });
   }
 
-  getAllCoursesPaginated() {
-    this._courseService.getAllCoursesPaginated(this.paginated().number + 1, this.paginated().size)
+  getAllCoursesPaginated(filter?: CourseFilter) {
+    this._courseService.getAllCoursesPaginated(this.paginated().number + 1, this.paginated().size, filter)
       .pipe(
         map(response => {
             this.paginated.update(p => ({
@@ -81,7 +82,10 @@ export class CoursesComponent {
   onPageChange(event: PageEvent) {
     this.paginated().number = event.pageIndex;
     this.paginated().size = event.pageSize;
-    this.getAllCoursesPaginated();
-    
+    this.getAllCoursesPaginated();    
+  }
+
+  search(filter: CourseFilter) {
+    this.getAllCoursesPaginated(filter);
   }
 }
